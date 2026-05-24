@@ -1,7 +1,3 @@
-## Live Demo
-
-[Launch Practical AI Ops Toolkit](https://ai-ops-portfolio-app.streamlit.app/)
-
 # Practical AI Ops Toolkit
 
 Practical AI Ops Toolkit is a portfolio hub for AI-assisted workflow tools built by Bradley Hankins.
@@ -13,7 +9,12 @@ The portfolio demonstrates practical AI applications for:
 - CRM workflow discipline
 - Candidate screening
 - Hiring consistency
+- SOP and training documentation
 - Manager decision support
+
+## Live Demo
+
+[Launch Practical AI Ops Toolkit](https://ai-ops-portfolio-app.streamlit.app/)
 
 ## Projects Included
 
@@ -28,6 +29,10 @@ AI-assisted sales follow-up workflow tool that generates customer text messages,
 ### RecruitPilot AI
 
 AI-assisted candidate screening workflow tool that generates fit scores, risk levels, green flags, red flags, follow-up interview questions, interview scorecards, manager notes, candidate emails, onboarding plans, and downloadable candidate review reports.
+
+### SOPPilot AI
+
+AI-assisted SOP, checklist, and training document generator that turns rough process notes into SOPs, process checklists, missing-information checks, risk diagnoses, training plans, quality control guides, implementation plans, and downloadable SOP packages.
 
 ## Screenshots
 
@@ -64,6 +69,8 @@ The focus is practical execution:
 - Better visibility
 - Better follow-up
 - Better hiring workflows
+- Better process documentation
+- Better training consistency
 - Better manager documentation
 - Better decision support
 
@@ -75,6 +82,19 @@ The focus is practical execution:
 - GitHub
 - Streamlit Community Cloud
 - Markdown report exports
+- CSV-based workflows
+
+## Roadmap
+
+Planned improvements include:
+
+- Richer dashboards and charts
+- Adjustable goal targets
+- PDF export options
+- Optional OpenAI API integrations
+- Multi-record upload workflows
+- Team-level reporting
+- ClientOps Intake AI diagnostic app
 
 ## Run Locally
 
@@ -90,4 +110,4 @@ All sample data, names, companies, and scenarios used in these projects are fict
 ## Built By
 
 Bradley Hankins  
-Operations & Revenue Leader | Technology & AI Workflow Integration
+Operations & Revenue Leader | AI Workflow Automation | RevOps & Process Improvement
