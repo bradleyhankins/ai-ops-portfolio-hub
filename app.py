@@ -75,6 +75,28 @@ st.markdown(
     .block-container { padding-top: 1.35rem; padding-bottom: 3rem; max-width: 1120px; }
     [data-testid="stSidebar"] { background: #111827; }
     [data-testid="stSidebar"] * { color: #f9fafb !important; }
+    [data-testid="stSidebar"] .stLinkButton a,
+    [data-testid="stSidebar"] .stLinkButton a:visited {
+        background: #f9fafb !important;
+        color: #111827 !important;
+        border: 1px solid #e5e7eb !important;
+        font-weight: 800 !important;
+        border-radius: 12px !important;
+    }
+    [data-testid="stSidebar"] .stLinkButton a:hover {
+        background: #dbeafe !important;
+        color: #0f172a !important;
+        border-color: #93c5fd !important;
+    }
+    [data-testid="stSidebar"] .stButton button,
+    [data-testid="stSidebar"] .stButton button:disabled {
+        background: #f9fafb !important;
+        color: #111827 !important;
+        border: 1px solid #e5e7eb !important;
+        font-weight: 800 !important;
+        border-radius: 12px !important;
+        opacity: 1 !important;
+    }
     .hero { padding: 2rem 2rem 1.8rem 2rem; border-radius: 20px; background: linear-gradient(135deg, #111827 0%, #1f2937 52%, #334155 100%); color: #ffffff; box-shadow: 0 18px 36px rgba(17, 24, 39, 0.20); margin-bottom: 1rem; border: 1px solid rgba(255,255,255,.08); }
     .eyebrow { text-transform: uppercase; letter-spacing: .13em; font-size: .75rem; font-weight: 800; color: #93c5fd; margin-bottom: .65rem; }
     .hero-title { font-size: 2.35rem; line-height: 1.08; font-weight: 850; margin-bottom: .75rem; max-width: 850px; }
@@ -174,7 +196,7 @@ def usecase_card(need, project, result):
 
 with st.sidebar:
     st.title("Practical AI Ops Toolkit")
-    st.caption("Executive Portfolio v2.5")
+    st.caption("Executive Portfolio v2.6")
     st.markdown("""
     **Bradley Hankins**  
     Operations & Revenue Leader  
@@ -193,10 +215,10 @@ with st.sidebar:
     """)
     st.divider()
     st.markdown("### Connect")
-    st.link_button("GitHub Profile", GITHUB_PROFILE, use_container_width=True)
-    st.link_button("LinkedIn Profile", LINKEDIN_URL, use_container_width=True)
+    st.link_button("🐙 GitHub Profile", GITHUB_PROFILE, use_container_width=True)
+    st.link_button("💼 LinkedIn Profile", LINKEDIN_URL, use_container_width=True)
     if RESUME_LINK.startswith("http"):
-        st.link_button("Resume", RESUME_LINK, use_container_width=True)
+        st.link_button("📄 Resume", RESUME_LINK, use_container_width=True)
 
 # -----------------------------
 # Hero
@@ -364,13 +386,13 @@ st.markdown(
 
 connect_col1, connect_col2, connect_col3 = st.columns(3)
 with connect_col1:
-    safe_link_button("LinkedIn Profile", LINKEDIN_URL)
+    safe_link_button("💼 LinkedIn Profile", LINKEDIN_URL)
 with connect_col2:
-    safe_link_button("GitHub Profile", GITHUB_PROFILE)
+    safe_link_button("🐙 GitHub Profile", GITHUB_PROFILE)
 with connect_col3:
     if RESUME_LINK.startswith("http"):
-        safe_link_button("Resume", RESUME_LINK)
+        safe_link_button("📄 Resume", RESUME_LINK)
     else:
-        st.button("Resume Link Pending", disabled=True, use_container_width=True)
+        st.button("📄 Resume Link Pending", disabled=True, use_container_width=True)
 
 st.markdown("""<div class="final-cta"><h2>Practical AI tools built to solve real operational problems.</h2><p>Operations visibility. Sales execution. Hiring consistency. Process documentation.</p></div>""", unsafe_allow_html=True)
