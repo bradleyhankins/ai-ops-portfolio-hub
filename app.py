@@ -26,6 +26,73 @@ LINKEDIN_URL = "https://www.linkedin.com/in/bradleyhankins/"
 GITHUB_PROFILE = "https://github.com/bradleyhankins"
 RESUME_LINK = "PASTE_RESUME_LINK_HERE_OPTIONAL"
 
+PROJECTS = {
+    "OpsPilot AI": {
+        "category": "Operations Intelligence Dashboard",
+        "problem": "Managers often have activity data but lack a clear action plan.",
+        "outcome": "Turns sales activity into KPIs, coaching priorities, manager briefs, and downloadable reports.",
+        "features": [
+            "KPI dashboard",
+            "Rep and lead source analysis",
+            "AI-style operations diagnosis",
+            "Manager brief and meeting agenda",
+            "Downloadable manager report"
+        ],
+        "tech": "Python • Streamlit • Pandas • CSV workflow",
+        "live": OPSPILOT_LIVE,
+        "github": OPSPILOT_GITHUB,
+        "best_for": "Operations, RevOps, performance visibility, manager reporting"
+    },
+    "FollowUpPilot AI": {
+        "category": "Sales Follow-Up Workflow Tool",
+        "problem": "Sales opportunities are lost when follow-up is slow or poorly documented.",
+        "outcome": "Standardizes customer communication, CRM notes, objection handling, and follow-up sequences.",
+        "features": [
+            "Priority score",
+            "Text and email generator",
+            "CRM note and call script",
+            "Objection guidance",
+            "Multi-touch follow-up plan"
+        ],
+        "tech": "Python • Streamlit • Workflow logic • Markdown export",
+        "live": FOLLOWUPPILOT_LIVE,
+        "github": FOLLOWUPPILOT_GITHUB,
+        "best_for": "Sales execution, CRM discipline, follow-up workflows"
+    },
+    "RecruitPilot AI": {
+        "category": "Candidate Screening Workflow Tool",
+        "problem": "Small businesses often hire from scattered notes and inconsistent interviews.",
+        "outcome": "Creates structured candidate reviews, fit scores, risk levels, scorecards, and onboarding plans.",
+        "features": [
+            "Candidate fit score",
+            "Risk level and recommendation",
+            "Green and red flags",
+            "Interview questions and scorecard",
+            "Downloadable candidate report"
+        ],
+        "tech": "Python • Streamlit • Screening logic • Markdown export",
+        "live": RECRUITPILOT_LIVE,
+        "github": RECRUITPILOT_GITHUB,
+        "best_for": "Hiring consistency, interview structure, onboarding preparation"
+    },
+    "SOPPilot AI": {
+        "category": "SOP & Training Document Generator",
+        "problem": "Teams rely on tribal knowledge, verbal instructions, and inconsistent documentation.",
+        "outcome": "Turns rough process notes into SOPs, checklists, training plans, quality guides, and rollout plans.",
+        "features": [
+            "Complexity score",
+            "Risk diagnosis",
+            "Missing-info check",
+            "SOP, checklist, and training plan",
+            "Downloadable SOP package"
+        ],
+        "tech": "Python • Streamlit • Process logic • Markdown export",
+        "live": SOPPILOT_LIVE,
+        "github": SOPPILOT_GITHUB,
+        "best_for": "Process documentation, training consistency, quality control"
+    }
+}
+
 # -----------------------------
 # Styling
 # -----------------------------
@@ -39,13 +106,8 @@ st.markdown(
         max-width: 1120px;
     }
 
-    [data-testid="stSidebar"] {
-        background: #111827;
-    }
-
-    [data-testid="stSidebar"] * {
-        color: #f9fafb !important;
-    }
+    [data-testid="stSidebar"] { background: #111827; }
+    [data-testid="stSidebar"] * { color: #f9fafb !important; }
 
     .hero {
         padding: 2rem 2rem 1.8rem 2rem;
@@ -138,29 +200,37 @@ st.markdown(
         max-width: 950px;
     }
 
-    .info-card {
+    .info-card, .roadmap-card, .spotlight-card, .link-card {
         padding: 1.2rem;
         border: 1px solid #e5e7eb;
         border-radius: 18px;
         background: #ffffff;
         box-shadow: 0 8px 20px rgba(15,23,42,.055);
-        min-height: 215px;
     }
 
-    .info-card h3,
-    .roadmap-card h3 {
+    .info-card { min-height: 215px; }
+    .roadmap-card { min-height: 235px; }
+    .spotlight-card { margin-bottom: .75rem; border-left: 5px solid #1d4ed8; }
+    .link-card { min-height: 180px; border-top: 4px solid #111827; }
+
+    .info-card h3, .roadmap-card h3, .spotlight-card h3, .link-card h3 {
         font-size: 1.05rem;
         font-weight: 850;
         color: #111827;
         margin-bottom: .5rem;
     }
 
-    .info-card li,
-    .roadmap-card li {
+    .info-card li, .roadmap-card li, .spotlight-card li {
         color: #4b5563;
         line-height: 1.48;
         font-size: .92rem;
         margin-bottom: .18rem;
+    }
+
+    .link-card p, .spotlight-card p {
+        color: #4b5563;
+        line-height: 1.55;
+        font-size: .93rem;
     }
 
     .project-card {
@@ -238,15 +308,6 @@ st.markdown(
         color: #1f2937;
         font-size: .82rem;
         font-weight: 760;
-    }
-
-    .roadmap-card {
-        padding: 1.1rem;
-        border-radius: 18px;
-        background: #ffffff;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 8px 20px rgba(15,23,42,.045);
-        min-height: 235px;
     }
 
     .note-box {
@@ -335,18 +396,36 @@ def project_card(title, category, problem, outcome, features, tech, live_url, gi
         safe_link_button("GitHub", github_url)
 
 
+def practical_link_card(title, body, primary_label, primary_url):
+    st.markdown(
+        f"""
+        <div class="link-card">
+            <h3>{title}</h3>
+            <p>{body}</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    safe_link_button(primary_label, primary_url)
+
 # -----------------------------
 # Sidebar
 # -----------------------------
 
 st.sidebar.title("Practical AI Ops Toolkit")
-st.sidebar.caption("Executive Portfolio v2.2")
+st.sidebar.caption("Executive Portfolio v2.3")
 st.sidebar.markdown("""
 **Bradley Hankins**  
 Operations & Revenue Leader  
 AI Workflow Automation  
 RevOps & Process Improvement
 """)
+st.sidebar.divider()
+st.sidebar.markdown("### Best starting points")
+safe_link_button("View GitHub Profile", GITHUB_PROFILE)
+safe_link_button("Connect on LinkedIn", LINKEDIN_URL)
+if RESUME_LINK.startswith("http"):
+    safe_link_button("View Resume", RESUME_LINK)
 st.sidebar.divider()
 st.sidebar.markdown("### Toolkit Focus")
 st.sidebar.markdown("""
@@ -357,11 +436,6 @@ st.sidebar.markdown("""
 - Manager reporting
 - Decision support
 """)
-st.sidebar.divider()
-safe_link_button("GitHub Profile", GITHUB_PROFILE)
-safe_link_button("LinkedIn Profile", LINKEDIN_URL)
-if RESUME_LINK.startswith("http"):
-    safe_link_button("Resume", RESUME_LINK)
 
 # -----------------------------
 # Hero
@@ -397,6 +471,39 @@ with stat_col3:
     stat_card("Outputs", "Dashboards + Reports")
 with stat_col4:
     stat_card("Focus", "AI Operations")
+
+# -----------------------------
+# Practical next steps
+# -----------------------------
+
+st.markdown('<div class="section-title">Start here</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="section-lede">For hiring managers, recruiters, or consulting prospects, these are the fastest ways to evaluate the work.</div>',
+    unsafe_allow_html=True
+)
+
+link_col1, link_col2, link_col3 = st.columns(3)
+with link_col1:
+    practical_link_card(
+        "Review the full code portfolio",
+        "See the repositories, README files, case studies, and project structure behind each deployed app.",
+        "Open GitHub Profile",
+        GITHUB_PROFILE
+    )
+with link_col2:
+    practical_link_card(
+        "Connect professionally",
+        "View background, current positioning, and reach out regarding operations, AI workflow, or RevOps opportunities.",
+        "Open LinkedIn Profile",
+        LINKEDIN_URL
+    )
+with link_col3:
+    practical_link_card(
+        "Use the live tools",
+        "Open any project below to test the working Streamlit applications directly in the browser.",
+        "Jump to OpsPilot AI",
+        OPSPILOT_LIVE
+    )
 
 # -----------------------------
 # Overview
@@ -448,6 +555,43 @@ st.markdown(
 )
 
 # -----------------------------
+# Project spotlight
+# -----------------------------
+
+st.markdown('<div class="section-title">Project spotlight</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="section-lede">Rather than using rotating cards that hide information, this selector lets visitors quickly focus on the project most relevant to them.</div>',
+    unsafe_allow_html=True
+)
+
+selected_project = st.selectbox(
+    "Choose a project to spotlight",
+    list(PROJECTS.keys()),
+    index=0
+)
+spotlight = PROJECTS[selected_project]
+spotlight_features = "".join([f"<li>{feature}</li>" for feature in spotlight["features"]])
+st.markdown(
+    f"""
+    <div class="spotlight-card">
+        <h3>{selected_project}</h3>
+        <p><strong>{spotlight['category']}</strong></p>
+        <p><strong>Best for:</strong> {spotlight['best_for']}</p>
+        <p><strong>Problem:</strong> {spotlight['problem']}</p>
+        <p><strong>Outcome:</strong> {spotlight['outcome']}</p>
+        <ul>{spotlight_features}</ul>
+        <p><strong>Tech:</strong> {spotlight['tech']}</p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+spot_col1, spot_col2 = st.columns(2)
+with spot_col1:
+    safe_link_button(f"Launch {selected_project}", spotlight["live"])
+with spot_col2:
+    safe_link_button(f"View {selected_project} on GitHub", spotlight["github"])
+
+# -----------------------------
 # Story
 # -----------------------------
 
@@ -471,78 +615,22 @@ st.markdown('<div class="section-title">Project portfolio</div>', unsafe_allow_h
 project_col1, project_col2 = st.columns(2)
 
 with project_col1:
-    project_card(
-        title="OpsPilot AI",
-        category="Operations Intelligence Dashboard",
-        problem="Managers often have activity data but lack a clear action plan.",
-        outcome="Turns sales activity into KPIs, coaching priorities, manager briefs, and downloadable reports.",
-        features=[
-            "KPI dashboard",
-            "Rep and lead source analysis",
-            "AI-style operations diagnosis",
-            "Manager brief and meeting agenda",
-            "Downloadable manager report"
-        ],
-        tech="Python • Streamlit • Pandas • CSV workflow",
-        live_url=OPSPILOT_LIVE,
-        github_url=OPSPILOT_GITHUB
-    )
+    p = PROJECTS["OpsPilot AI"]
+    project_card("OpsPilot AI", p["category"], p["problem"], p["outcome"], p["features"], p["tech"], p["live"], p["github"])
 
 with project_col2:
-    project_card(
-        title="FollowUpPilot AI",
-        category="Sales Follow-Up Workflow Tool",
-        problem="Sales opportunities are lost when follow-up is slow or poorly documented.",
-        outcome="Standardizes customer communication, CRM notes, objection handling, and follow-up sequences.",
-        features=[
-            "Priority score",
-            "Text and email generator",
-            "CRM note and call script",
-            "Objection guidance",
-            "Multi-touch follow-up plan"
-        ],
-        tech="Python • Streamlit • Workflow logic • Markdown export",
-        live_url=FOLLOWUPPILOT_LIVE,
-        github_url=FOLLOWUPPILOT_GITHUB
-    )
+    p = PROJECTS["FollowUpPilot AI"]
+    project_card("FollowUpPilot AI", p["category"], p["problem"], p["outcome"], p["features"], p["tech"], p["live"], p["github"])
 
 project_col3, project_col4 = st.columns(2)
 
 with project_col3:
-    project_card(
-        title="RecruitPilot AI",
-        category="Candidate Screening Workflow Tool",
-        problem="Small businesses often hire from scattered notes and inconsistent interviews.",
-        outcome="Creates structured candidate reviews, fit scores, risk levels, scorecards, and onboarding plans.",
-        features=[
-            "Candidate fit score",
-            "Risk level and recommendation",
-            "Green and red flags",
-            "Interview questions and scorecard",
-            "Downloadable candidate report"
-        ],
-        tech="Python • Streamlit • Screening logic • Markdown export",
-        live_url=RECRUITPILOT_LIVE,
-        github_url=RECRUITPILOT_GITHUB
-    )
+    p = PROJECTS["RecruitPilot AI"]
+    project_card("RecruitPilot AI", p["category"], p["problem"], p["outcome"], p["features"], p["tech"], p["live"], p["github"])
 
 with project_col4:
-    project_card(
-        title="SOPPilot AI",
-        category="SOP & Training Document Generator",
-        problem="Teams rely on tribal knowledge, verbal instructions, and inconsistent documentation.",
-        outcome="Turns rough process notes into SOPs, checklists, training plans, quality guides, and rollout plans.",
-        features=[
-            "Complexity score",
-            "Risk diagnosis",
-            "Missing-info check",
-            "SOP, checklist, and training plan",
-            "Downloadable SOP package"
-        ],
-        tech="Python • Streamlit • Process logic • Markdown export",
-        live_url=SOPPILOT_LIVE,
-        github_url=SOPPILOT_GITHUB
-    )
+    p = PROJECTS["SOPPilot AI"]
+    project_card("SOPPilot AI", p["category"], p["problem"], p["outcome"], p["features"], p["tech"], p["live"], p["github"])
 
 # -----------------------------
 # Roadmap
