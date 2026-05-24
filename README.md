@@ -34,9 +34,18 @@ Responsible ATS Lite resume review assistant that organizes job descriptions and
 
 Process documentation workflow assistant that turns rough process notes into SOPs, process checklists, missing-information checks, risk diagnoses, rollout readiness guidance, manager summaries, training plans, quality control guides, implementation plans, and downloadable SOP packages.
 
+## Suggested Test Flow
+
+1. Launch the live portfolio hub.
+2. Review the hero section and project summary cards.
+3. Use the “Best project by use case” section to choose a workflow.
+4. Test the project spotlight dropdown for all four projects.
+5. Open at least one live demo and one GitHub repository link.
+6. Review the roadmap and positioning sections.
+
 ## Screenshots
 
-Screenshots will be refreshed after all portfolio apps are upgraded and visually verified.
+Screenshots will be refreshed after all portfolio apps are visually verified.
 
 ## Portfolio Purpose
 
