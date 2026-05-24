@@ -34,136 +34,171 @@ st.markdown(
     """
     <style>
     .block-container {
-        padding-top: 2rem;
+        padding-top: 1.35rem;
         padding-bottom: 3rem;
-        max-width: 1180px;
+        max-width: 1120px;
     }
 
     [data-testid="stSidebar"] {
-        background: #0f172a;
+        background: #111827;
     }
 
     [data-testid="stSidebar"] * {
-        color: #f8fafc !important;
+        color: #f9fafb !important;
     }
 
     .hero {
-        padding: 2.25rem 2rem;
-        border-radius: 28px;
-        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 52%, #2563eb 100%);
-        color: white;
-        box-shadow: 0 22px 48px rgba(15, 23, 42, 0.22);
-        margin-bottom: 1.5rem;
+        padding: 2rem 2rem 1.8rem 2rem;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #111827 0%, #1f2937 52%, #334155 100%);
+        color: #ffffff;
+        box-shadow: 0 18px 36px rgba(17, 24, 39, 0.20);
+        margin-bottom: 1rem;
+        border: 1px solid rgba(255,255,255,.08);
     }
 
     .eyebrow {
         text-transform: uppercase;
-        letter-spacing: .12em;
-        font-size: .78rem;
+        letter-spacing: .13em;
+        font-size: .75rem;
         font-weight: 800;
-        color: #bfdbfe;
-        margin-bottom: .75rem;
+        color: #93c5fd;
+        margin-bottom: .65rem;
     }
 
     .hero-title {
-        font-size: 3.15rem;
-        line-height: 1.03;
-        font-weight: 900;
-        margin-bottom: .8rem;
+        font-size: 2.35rem;
+        line-height: 1.08;
+        font-weight: 850;
+        margin-bottom: .75rem;
+        max-width: 850px;
     }
 
     .hero-subtitle {
-        font-size: 1.15rem;
-        line-height: 1.65;
-        color: #e0f2fe;
-        max-width: 920px;
-        margin-bottom: 1.2rem;
+        font-size: 1.02rem;
+        line-height: 1.62;
+        color: #e5e7eb;
+        max-width: 900px;
+        margin-bottom: 1rem;
     }
 
     .hero-pills span {
         display: inline-block;
-        padding: .45rem .75rem;
-        margin: .2rem .35rem .2rem 0;
+        padding: .35rem .65rem;
+        margin: .18rem .28rem .18rem 0;
         border-radius: 999px;
-        background: rgba(255,255,255,.14);
-        border: 1px solid rgba(255,255,255,.23);
+        background: rgba(255,255,255,.10);
+        border: 1px solid rgba(255,255,255,.16);
         font-weight: 700;
-        font-size: .88rem;
+        font-size: .78rem;
+        color: #f8fafc;
+    }
+
+    .stat-card {
+        padding: 1rem 1rem .95rem 1rem;
+        border-radius: 16px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 7px 18px rgba(15, 23, 42, .06);
+        min-height: 112px;
+        margin-bottom: .75rem;
+    }
+
+    .stat-label {
+        color: #6b7280;
+        font-size: .82rem;
+        font-weight: 750;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        margin-bottom: .45rem;
+    }
+
+    .stat-value {
+        color: #111827;
+        font-size: 1.55rem;
+        line-height: 1.18;
+        font-weight: 850;
+        white-space: normal;
+        overflow-wrap: break-word;
     }
 
     .section-title {
-        margin-top: 1.25rem;
-        margin-bottom: .65rem;
-        font-size: 1.65rem;
+        margin-top: 1.3rem;
+        margin-bottom: .55rem;
+        font-size: 1.45rem;
         font-weight: 850;
-        color: #0f172a;
+        color: #111827;
     }
 
     .section-lede {
-        color: #475569;
-        font-size: 1.02rem;
-        line-height: 1.6;
-        margin-bottom: 1.15rem;
+        color: #4b5563;
+        font-size: .98rem;
+        line-height: 1.62;
+        margin-bottom: 1rem;
+        max-width: 950px;
     }
 
     .info-card {
-        padding: 1.35rem;
-        border: 1px solid #e2e8f0;
-        border-radius: 22px;
+        padding: 1.2rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
         background: #ffffff;
-        box-shadow: 0 10px 24px rgba(15,23,42,.07);
-        min-height: 220px;
+        box-shadow: 0 8px 20px rgba(15,23,42,.055);
+        min-height: 215px;
     }
 
-    .info-card h3 {
-        font-size: 1.15rem;
-        font-weight: 800;
-        color: #0f172a;
-        margin-bottom: .55rem;
+    .info-card h3,
+    .roadmap-card h3 {
+        font-size: 1.05rem;
+        font-weight: 850;
+        color: #111827;
+        margin-bottom: .5rem;
     }
 
-    .info-card p, .info-card li {
-        color: #475569;
-        line-height: 1.5;
-        font-size: .96rem;
+    .info-card li,
+    .roadmap-card li {
+        color: #4b5563;
+        line-height: 1.48;
+        font-size: .92rem;
+        margin-bottom: .18rem;
     }
 
     .project-card {
-        padding: 1.35rem;
-        border: 1px solid #dbeafe;
-        border-radius: 24px;
-        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-        box-shadow: 0 12px 30px rgba(15,23,42,.08);
-        min-height: 520px;
-        margin-bottom: .85rem;
+        padding: 1.25rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
+        background: #ffffff;
+        box-shadow: 0 10px 26px rgba(15,23,42,.07);
+        min-height: 468px;
+        margin-bottom: .65rem;
     }
 
     .project-topline {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
-        gap: 1rem;
-        margin-bottom: .6rem;
+        gap: .75rem;
+        margin-bottom: .45rem;
     }
 
     .project-title {
-        font-size: 1.35rem;
+        font-size: 1.22rem;
         font-weight: 900;
-        color: #0f172a;
+        color: #111827;
         margin: 0;
     }
 
     .project-category {
-        font-size: .86rem;
-        color: #2563eb;
+        font-size: .8rem;
+        color: #1d4ed8;
         font-weight: 800;
-        margin-bottom: .75rem;
+        margin-bottom: .65rem;
     }
 
     .status-pill {
-        padding: .25rem .6rem;
+        padding: .22rem .55rem;
         border-radius: 999px;
-        font-size: .78rem;
+        font-size: .72rem;
         font-weight: 850;
         color: #065f46;
         background: #d1fae5;
@@ -172,82 +207,77 @@ st.markdown(
     }
 
     .card-label {
-        font-size: .75rem;
+        font-size: .7rem;
         text-transform: uppercase;
         letter-spacing: .08em;
         font-weight: 850;
-        color: #64748b;
-        margin-top: .85rem;
-        margin-bottom: .25rem;
+        color: #6b7280;
+        margin-top: .75rem;
+        margin-bottom: .22rem;
     }
 
     .card-copy {
-        color: #334155;
-        line-height: 1.5;
-        font-size: .95rem;
+        color: #374151;
+        line-height: 1.48;
+        font-size: .9rem;
     }
 
     .feature-list {
         margin: .2rem 0 0 0;
-        padding-left: 1.05rem;
-        color: #334155;
-        line-height: 1.45;
-        font-size: .92rem;
+        padding-left: 1.02rem;
+        color: #374151;
+        line-height: 1.42;
+        font-size: .88rem;
     }
 
     .tech-line {
-        margin-top: .9rem;
-        padding: .7rem .8rem;
-        border-radius: 14px;
-        background: #eff6ff;
-        color: #1e3a8a;
-        font-size: .88rem;
-        font-weight: 700;
+        margin-top: .8rem;
+        padding: .62rem .72rem;
+        border-radius: 12px;
+        background: #f3f4f6;
+        color: #1f2937;
+        font-size: .82rem;
+        font-weight: 760;
     }
 
     .roadmap-card {
-        padding: 1.2rem;
-        border-radius: 20px;
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        min-height: 260px;
+        padding: 1.1rem;
+        border-radius: 18px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 8px 20px rgba(15,23,42,.045);
+        min-height: 235px;
     }
 
     .note-box {
-        padding: 1rem 1.1rem;
-        border-radius: 18px;
-        background: #ecfeff;
-        color: #164e63;
-        border: 1px solid #a5f3fc;
+        padding: .9rem 1rem;
+        border-radius: 14px;
+        background: #f8fafc;
+        color: #334155;
+        border: 1px solid #e2e8f0;
         font-weight: 650;
-        margin: 1rem 0;
+        margin: .95rem 0;
+        font-size: .92rem;
     }
 
     .final-cta {
-        padding: 1.7rem;
-        border-radius: 26px;
-        background: #0f172a;
+        padding: 1.4rem;
+        border-radius: 20px;
+        background: #111827;
         color: white;
-        margin-top: 1.4rem;
+        margin-top: 1.25rem;
         text-align: center;
     }
 
     .final-cta h2 {
         color: white;
-        margin-bottom: .35rem;
+        margin-bottom: .3rem;
+        font-size: 1.35rem;
     }
 
     .final-cta p {
-        color: #cbd5e1;
+        color: #d1d5db;
         margin-bottom: 0;
-    }
-
-    div[data-testid="stMetric"] {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        padding: 1rem;
-        border-radius: 18px;
-        box-shadow: 0 8px 18px rgba(15,23,42,.05);
     }
     </style>
     """,
@@ -263,6 +293,18 @@ def safe_link_button(label, url):
         st.link_button(label, url, use_container_width=True)
     else:
         st.button(label + " Pending", disabled=True, use_container_width=True)
+
+
+def stat_card(label, value):
+    st.markdown(
+        f"""
+        <div class="stat-card">
+            <div class="stat-label">{label}</div>
+            <div class="stat-value">{value}</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 
 def project_card(title, category, problem, outcome, features, tech, live_url, github_url):
@@ -298,7 +340,7 @@ def project_card(title, category, problem, outcome, features, tech, live_url, gi
 # -----------------------------
 
 st.sidebar.title("Practical AI Ops Toolkit")
-st.sidebar.caption("Portfolio v2.1")
+st.sidebar.caption("Executive Portfolio v2.2")
 st.sidebar.markdown("""
 **Bradley Hankins**  
 Operations & Revenue Leader  
@@ -329,37 +371,40 @@ st.markdown(
     """
     <div class="hero">
         <div class="eyebrow">AI Operations Portfolio</div>
-        <div class="hero-title">Practical AI tools for real business operations.</div>
+        <div class="hero-title">Practical AI tools for operational execution.</div>
         <div class="hero-subtitle">
-            A connected portfolio of AI-assisted workflow tools built to improve operations visibility,
-            sales follow-up, candidate screening, SOP documentation, manager reporting, and decision support
-            for small and mid-sized businesses.
+            A focused portfolio of AI-assisted workflow tools built to improve visibility, follow-up discipline,
+            candidate screening, process documentation, manager reporting, and decision support for growing teams.
         </div>
         <div class="hero-pills">
+            <span>Operations</span>
+            <span>RevOps</span>
+            <span>Workflow Automation</span>
             <span>Python</span>
             <span>Streamlit</span>
-            <span>Workflow Automation</span>
-            <span>RevOps</span>
-            <span>Manager Reporting</span>
         </div>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-metric_col1, metric_col2, metric_col3, metric_col4 = st.columns(4)
-metric_col1.metric("Portfolio Projects", "4")
-metric_col2.metric("Primary Stack", "Python + Streamlit")
-metric_col3.metric("Outputs", "Dashboards + Reports")
-metric_col4.metric("Focus", "AI Operations")
+stat_col1, stat_col2, stat_col3, stat_col4 = st.columns(4)
+with stat_col1:
+    stat_card("Portfolio Projects", "4")
+with stat_col2:
+    stat_card("Primary Stack", "Python + Streamlit")
+with stat_col3:
+    stat_card("Outputs", "Dashboards + Reports")
+with stat_col4:
+    stat_card("Focus", "AI Operations")
 
 # -----------------------------
 # Overview
 # -----------------------------
 
-st.markdown('<div class="section-title">What this portfolio demonstrates</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title">Executive summary</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="section-lede">This toolkit connects business operations experience with hands-on AI workflow implementation. Each app starts with a real operational pain point, maps the decision logic, and produces manager-ready outputs.</div>',
+    '<div class="section-lede">This toolkit connects business operations experience with hands-on AI workflow implementation. Each project starts with a repeated operational pain point, maps the decision logic, and produces manager-ready outputs that can be used in the field.</div>',
     unsafe_allow_html=True
 )
 
@@ -368,7 +413,7 @@ with biz_col:
     st.markdown(
         """
         <div class="info-card">
-            <h3>Business / Operations</h3>
+            <h3>Business Operations</h3>
             <ul>
                 <li>KPI reporting and manager visibility</li>
                 <li>Sales follow-up and CRM discipline</li>
@@ -384,7 +429,7 @@ with tech_col:
     st.markdown(
         """
         <div class="info-card">
-            <h3>AI / Technical</h3>
+            <h3>AI Workflow Implementation</h3>
             <ul>
                 <li>Python and Streamlit app development</li>
                 <li>Rules-based AI-style workflow logic</li>
@@ -398,7 +443,7 @@ with tech_col:
     )
 
 st.markdown(
-    '<div class="note-box">All sample data, names, companies, and scenarios are fictional and created for public portfolio demonstration.</div>',
+    '<div class="note-box">Public demo note: all sample data, names, companies, and scenarios are fictional and created for portfolio demonstration.</div>',
     unsafe_allow_html=True
 )
 
@@ -410,9 +455,8 @@ st.markdown('<div class="section-title">Portfolio story</div>', unsafe_allow_htm
 st.markdown(
     """
     <div class="section-lede">
-        The toolkit was built around four connected business problems: managers need visibility, sales teams need follow-up discipline,
-        hiring teams need consistent screening, and growing teams need clearer process documentation. Together, these projects show
-        how lightweight AI-assisted workflows can improve day-to-day operations without enterprise software.
+        The toolkit was built around four connected business problems: managers need performance visibility, sales teams need follow-up discipline,
+        hiring teams need consistent screening, and growing teams need clearer process documentation. Together, the projects demonstrate a practical AI Ops approach without relying on enterprise software.
     </div>
     """,
     unsafe_allow_html=True
@@ -422,7 +466,7 @@ st.markdown(
 # Projects
 # -----------------------------
 
-st.markdown('<div class="section-title">Projects</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-title">Project portfolio</div>', unsafe_allow_html=True)
 
 project_col1, project_col2 = st.columns(2)
 
@@ -511,7 +555,7 @@ with roadmap_col1:
     st.markdown(
         """
         <div class="roadmap-card">
-            <h3>Near-term upgrades</h3>
+            <h3>Near-Term Upgrades</h3>
             <ul>
                 <li>Improve dashboards and charts</li>
                 <li>Add adjustable goal targets</li>
@@ -528,7 +572,7 @@ with roadmap_col2:
     st.markdown(
         """
         <div class="roadmap-card">
-            <h3>Future direction</h3>
+            <h3>Future Direction</h3>
             <ul>
                 <li>Optional OpenAI API integrations</li>
                 <li>PDF export capability</li>
@@ -550,7 +594,7 @@ st.markdown(
     """
     <div class="section-lede">
         This portfolio supports a focused direction in <strong>AI Operations, Workflow Automation, RevOps, and Process Improvement</strong>.
-        The projects show a repeatable approach: identify an operational pain point, map the workflow, build a simple tool,
+        The projects show a repeatable approach: identify an operational pain point, map the workflow, build a working tool,
         generate manager-ready outputs, and document the work through live demos and GitHub case studies.
     </div>
     """,
