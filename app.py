@@ -295,11 +295,13 @@ CUSTOM_CSS = """
 }
 
 .project-card {
-    min-height: 468px;
+    height: 550px;
     margin-bottom: .65rem;
     padding: 1.25rem;
     border-radius: 20px;
     box-shadow: 0 10px 26px rgba(15,23,42,.07);
+    display: flex;
+    flex-direction: column;
 }
 
 .project-topline {
@@ -360,7 +362,7 @@ CUSTOM_CSS = """
 }
 
 .tech-line {
-    margin-top: .8rem;
+    margin-top: auto;
     padding: .62rem .72rem;
     border-radius: 12px;
     background: #f3f4f6;
