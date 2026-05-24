@@ -1,5 +1,7 @@
 import streamlit as st
 
+from ai_helpers import enhance_text
+
 st.set_page_config(page_title="Practical AI Ops Toolkit", page_icon="🧠", layout="wide")
 
 LINKEDIN_URL = "https://www.linkedin.com/in/bradleyhankins/"
@@ -134,6 +136,51 @@ def usecase_card(need: str, project: str, result: str) -> None:
     st.markdown(f'<div class="usecase-card"><h3>{need}</h3><p><strong>{project}</strong></p><p>{result}</p></div>', unsafe_allow_html=True)
 
 
+def md_to_html(text: str) -> str:
+    return "<p>" + text.replace("\n\n", "</p><p>").replace("\n", "<br>") + "</p>"
+
+
+def rules_recommendation_text(need: str, project_name: str, project: dict) -> str:
+    return f"""Recommended: {project_name}
+
+This is the best starting point for: {need}.
+
+Why it fits: {project['summary']}
+
+Best for: {project['best_for']}
+
+Suggested first action: launch the app, load the sample workflow, review the output, and download the report or package that best matches the problem.
+"""
+
+
+def recommendation_prompt(need: str, project_name: str, project: dict, fallback: str) -> str:
+    available_tools = "\n".join(
+        f"- {name}: {details['category']} | {details['summary']} | Best for: {details['best_for']}"
+        for name, details in PROJECTS.items()
+    )
+    return f"""
+You are a practical AI operations advisor.
+Use the selected business need and tool mapping to write a concise recommendation for a visitor reviewing this portfolio.
+Do not invent features. Recommend the selected project as the best starting point.
+Keep it business-focused and action-oriented.
+
+Selected business need: {need}
+Recommended project: {project_name}
+Project details: {project}
+Available tools:
+{available_tools}
+
+Rules-based fallback recommendation:
+{fallback}
+
+Return:
+1. Recommended starting tool
+2. Why it fits the business problem
+3. What the user should do first inside the app
+4. What output they should download or review
+"""
+
+
 with st.sidebar:
     st.title("Practical AI Ops Toolkit")
     st.caption("Executive Portfolio")
@@ -166,12 +213,17 @@ st.markdown('<div class="section-lede">Choose the business problem you are tryin
 need = st.selectbox("Business need", list(TOOL_SELECTOR.keys()))
 recommended_name = TOOL_SELECTOR[need]
 recommended = PROJECTS[recommended_name]
+fallback_recommendation = rules_recommendation_text(need, recommended_name, recommended)
+enhanced_recommendation = enhance_text(
+    recommendation_prompt(need, recommended_name, recommended, fallback_recommendation),
+    fallback_recommendation,
+    f"portfolio_recommendation_{hash(need + recommended_name)}",
+)
 st.markdown(f"""
 <div class="spotlight-card">
     <h3>Recommended: {recommended_name}</h3>
     <p><strong>{recommended['category']}</strong></p>
-    <p>{recommended['summary']}</p>
-    <p><strong>Best for:</strong> {recommended['best_for']}</p>
+    {md_to_html(enhanced_recommendation)}
 </div>
 """, unsafe_allow_html=True)
 r1, r2 = st.columns(2)
@@ -256,7 +308,7 @@ r1, r2 = st.columns(2)
 with r1:
     st.markdown('<div class="roadmap-card"><h3>Near-Term Upgrades</h3><ul><li>Refresh ClientOps screenshots</li><li>Add richer export formats</li><li>Add stronger role-specific templates</li><li>Explore PDF export options</li><li>Improve app-to-app navigation</li></ul></div>', unsafe_allow_html=True)
 with r2:
-    st.markdown('<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Optional OpenAI API integrations</li><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>Packaged small-business workflow toolkit</li><li>Consulting-style diagnostic workflow</li></ul></div>', unsafe_allow_html=True)
+    st.markdown('<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>Packaged small-business workflow toolkit</li><li>Consulting-style diagnostic workflow</li><li>Expanded embedded AI summaries</li></ul></div>', unsafe_allow_html=True)
 
 st.markdown('<div class="section-title">Career / consulting positioning</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">This portfolio supports a focused direction in <strong>AI Operations, Workflow Automation, RevOps, and Process Improvement</strong>. The projects show a repeatable approach: identify an operational pain point, map the workflow, build a working tool, generate manager-ready outputs, and document the work through live demos and GitHub case studies.</div>', unsafe_allow_html=True)
