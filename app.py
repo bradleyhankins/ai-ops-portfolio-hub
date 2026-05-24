@@ -1,27 +1,15 @@
 import streamlit as st
 
-st.set_page_config(
-    page_title="Practical AI Ops Toolkit",
-    page_icon="🧠",
-    layout="wide"
-)
-
-# -----------------------------
-# Project links
-# -----------------------------
+st.set_page_config(page_title="Practical AI Ops Toolkit", page_icon="🧠", layout="wide")
 
 OPSPILOT_LIVE = "https://opspilot-ai.streamlit.app/"
 OPSPILOT_GITHUB = "https://github.com/bradleyhankins/opspilot-ai"
-
 FOLLOWUPPILOT_LIVE = "https://followuppilot-ai.streamlit.app/"
 FOLLOWUPPILOT_GITHUB = "https://github.com/bradleyhankins/followuppilot-ai"
-
 RECRUITPILOT_LIVE = "https://recruitpilot-ai.streamlit.app/"
 RECRUITPILOT_GITHUB = "https://github.com/bradleyhankins/recruitpilot-ai"
-
 SOPPILOT_LIVE = "https://soppilot-ai.streamlit.app/"
 SOPPILOT_GITHUB = "https://github.com/bradleyhankins/soppilot-ai"
-
 LINKEDIN_URL = "https://www.linkedin.com/in/bradleyhankins/"
 GITHUB_PROFILE = "https://github.com/bradleyhankins"
 RESUME_LINK = "PASTE_RESUME_LINK_HERE_OPTIONAL"
@@ -35,7 +23,7 @@ PROJECTS = {
         "tech": "Python • Streamlit • Pandas • CSV workflow",
         "live": OPSPILOT_LIVE,
         "github": OPSPILOT_GITHUB,
-        "best_for": "Operations, RevOps, performance visibility, manager reporting"
+        "best_for": "Operations, RevOps, performance visibility, manager reporting",
     },
     "FollowUpPilot AI": {
         "category": "Sales Follow-Up Workflow Tool",
@@ -45,7 +33,7 @@ PROJECTS = {
         "tech": "Python • Streamlit • Workflow logic • Markdown export",
         "live": FOLLOWUPPILOT_LIVE,
         "github": FOLLOWUPPILOT_GITHUB,
-        "best_for": "Sales execution, CRM discipline, follow-up workflows"
+        "best_for": "Sales execution, CRM discipline, follow-up workflows",
     },
     "RecruitPilot AI": {
         "category": "Candidate Screening Workflow Tool",
@@ -55,7 +43,7 @@ PROJECTS = {
         "tech": "Python • Streamlit • Screening logic • Markdown export",
         "live": RECRUITPILOT_LIVE,
         "github": RECRUITPILOT_GITHUB,
-        "best_for": "Hiring consistency, interview structure, onboarding preparation"
+        "best_for": "Hiring consistency, interview structure, onboarding preparation",
     },
     "SOPPilot AI": {
         "category": "SOP & Training Document Generator",
@@ -65,46 +53,61 @@ PROJECTS = {
         "tech": "Python • Streamlit • Process logic • Markdown export",
         "live": SOPPILOT_LIVE,
         "github": SOPPILOT_GITHUB,
-        "best_for": "Process documentation, training consistency, quality control"
-    }
+        "best_for": "Process documentation, training consistency, quality control",
+    },
 }
 
 st.markdown(
     """
     <style>
     .block-container { padding-top: 1.35rem; padding-bottom: 3rem; max-width: 1120px; }
+
     [data-testid="stSidebar"] { background: #111827; }
-    [data-testid="stSidebar"] * { color: #f9fafb !important; }
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] li,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] label { color: #f9fafb !important; }
+
     [data-testid="stSidebar"] .stLinkButton a,
-    [data-testid="stSidebar"] .stLinkButton a:visited {
-        background: #f9fafb !important;
-        color: #111827 !important;
-        border: 1px solid #e5e7eb !important;
-        font-weight: 800 !important;
-        border-radius: 12px !important;
-    }
-    [data-testid="stSidebar"] .stLinkButton a:hover {
-        background: #dbeafe !important;
-        color: #0f172a !important;
-        border-color: #93c5fd !important;
-    }
+    [data-testid="stSidebar"] .stLinkButton a:visited,
     [data-testid="stSidebar"] .stButton button,
     [data-testid="stSidebar"] .stButton button:disabled {
         background: #f9fafb !important;
-        color: #111827 !important;
         border: 1px solid #e5e7eb !important;
-        font-weight: 800 !important;
         border-radius: 12px !important;
+        color: #111827 !important;
+        font-weight: 850 !important;
+        min-height: 46px !important;
         opacity: 1 !important;
+        box-shadow: 0 6px 16px rgba(0,0,0,.18) !important;
     }
-    .hero { padding: 2rem 2rem 1.8rem 2rem; border-radius: 20px; background: linear-gradient(135deg, #111827 0%, #1f2937 52%, #334155 100%); color: #ffffff; box-shadow: 0 18px 36px rgba(17, 24, 39, 0.20); margin-bottom: 1rem; border: 1px solid rgba(255,255,255,.08); }
+    [data-testid="stSidebar"] .stLinkButton a *,
+    [data-testid="stSidebar"] .stButton button * {
+        color: #111827 !important;
+        font-weight: 850 !important;
+    }
+    [data-testid="stSidebar"] .stLinkButton a:hover,
+    [data-testid="stSidebar"] .stButton button:hover {
+        background: #dbeafe !important;
+        border-color: #93c5fd !important;
+        transform: translateY(-1px);
+    }
+    [data-testid="stSidebar"] .stLinkButton a:hover *,
+    [data-testid="stSidebar"] .stButton button:hover * { color: #0f172a !important; }
+
+    .hero { padding: 2rem 2rem 1.8rem; border-radius: 20px; background: linear-gradient(135deg, #111827 0%, #1f2937 52%, #334155 100%); color: #ffffff; box-shadow: 0 18px 36px rgba(17,24,39,.20); margin-bottom: 1rem; border: 1px solid rgba(255,255,255,.08); }
     .eyebrow { text-transform: uppercase; letter-spacing: .13em; font-size: .75rem; font-weight: 800; color: #93c5fd; margin-bottom: .65rem; }
     .hero-title { font-size: 2.35rem; line-height: 1.08; font-weight: 850; margin-bottom: .75rem; max-width: 850px; }
     .hero-subtitle { font-size: 1.02rem; line-height: 1.62; color: #e5e7eb; max-width: 900px; margin-bottom: 1rem; }
     .hero-pills span { display: inline-block; padding: .35rem .65rem; margin: .18rem .28rem .18rem 0; border-radius: 999px; background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.16); font-weight: 700; font-size: .78rem; color: #f8fafc; }
-    .stat-card { padding: 1rem 1rem .95rem 1rem; border-radius: 16px; background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 7px 18px rgba(15, 23, 42, .06); min-height: 112px; margin-bottom: .75rem; }
-    .stat-label { color: #6b7280; font-size: .82rem; font-weight: 750; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .45rem; }
-    .stat-value { color: #111827; font-size: 1.55rem; line-height: 1.18; font-weight: 850; white-space: normal; overflow-wrap: break-word; }
+
+    .stat-card { height: 142px; padding: 1rem; border-radius: 16px; background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 7px 18px rgba(15,23,42,.06); margin-bottom: .75rem; display: flex; flex-direction: column; justify-content: flex-start; }
+    .stat-label { color: #6b7280; font-size: .82rem; font-weight: 750; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .6rem; }
+    .stat-value { color: #111827; font-size: 1.48rem; line-height: 1.18; font-weight: 850; white-space: normal; overflow-wrap: break-word; }
+
     .section-title { margin-top: 1.3rem; margin-bottom: .55rem; font-size: 1.45rem; font-weight: 850; color: #111827; }
     .section-lede { color: #4b5563; font-size: .98rem; line-height: 1.62; margin-bottom: 1rem; max-width: 950px; }
     .info-card, .roadmap-card, .spotlight-card, .link-card, .usecase-card, .available-card { padding: 1.2rem; border: 1px solid #e5e7eb; border-radius: 18px; background: #ffffff; box-shadow: 0 8px 20px rgba(15,23,42,.055); }
@@ -112,7 +115,7 @@ st.markdown(
     .roadmap-card { min-height: 235px; }
     .spotlight-card { margin-bottom: .75rem; border-left: 5px solid #1d4ed8; }
     .link-card { min-height: 180px; border-top: 4px solid #111827; }
-    .usecase-card { min-height: 150px; border-left: 4px solid #1d4ed8; }
+    .usecase-card { min-height: 150px; border-left: 4px solid #1d4ed8; margin-bottom: .75rem; }
     .available-card { border-top: 4px solid #111827; }
     .info-card h3, .roadmap-card h3, .spotlight-card h3, .link-card h3, .usecase-card h3, .available-card h3 { font-size: 1.05rem; font-weight: 850; color: #111827; margin-bottom: .5rem; }
     .info-card li, .roadmap-card li, .spotlight-card li, .available-card li { color: #4b5563; line-height: 1.48; font-size: .92rem; margin-bottom: .18rem; }
@@ -133,12 +136,9 @@ st.markdown(
     .final-cta p { color: #d1d5db; margin-bottom: 0; }
     </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
-# -----------------------------
-# Helpers
-# -----------------------------
 
 def safe_link_button(label, url):
     if isinstance(url, str) and url.startswith("http"):
@@ -148,7 +148,7 @@ def safe_link_button(label, url):
 
 
 def stat_card(label, value):
-    st.markdown(f"""<div class="stat-card"><div class="stat-label">{label}</div><div class="stat-value">{value}</div></div>""", unsafe_allow_html=True)
+    st.markdown(f'<div class="stat-card"><div class="stat-label">{label}</div><div class="stat-value">{value}</div></div>', unsafe_allow_html=True)
 
 
 def project_card(title, category, problem, outcome, features, tech, live_url, github_url):
@@ -164,7 +164,7 @@ def project_card(title, category, problem, outcome, features, tech, live_url, gi
             <div class="tech-line">{tech}</div>
         </div>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
     col1, col2 = st.columns(2)
     with col1:
@@ -174,29 +174,17 @@ def project_card(title, category, problem, outcome, features, tech, live_url, gi
 
 
 def practical_link_card(title, body, primary_label, primary_url):
-    st.markdown(f"""<div class="link-card"><h3>{title}</h3><p>{body}</p></div>""", unsafe_allow_html=True)
+    st.markdown(f'<div class="link-card"><h3>{title}</h3><p>{body}</p></div>', unsafe_allow_html=True)
     safe_link_button(primary_label, primary_url)
 
 
 def usecase_card(need, project, result):
-    st.markdown(
-        f"""
-        <div class="usecase-card">
-            <h3>{need}</h3>
-            <p><strong>{project}</strong></p>
-            <p>{result}</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown(f'<div class="usecase-card"><h3>{need}</h3><p><strong>{project}</strong></p><p>{result}</p></div>', unsafe_allow_html=True)
 
-# -----------------------------
-# Sidebar
-# -----------------------------
 
 with st.sidebar:
     st.title("Practical AI Ops Toolkit")
-    st.caption("Executive Portfolio v2.6")
+    st.caption("Executive Portfolio v2.7")
     st.markdown("""
     **Bradley Hankins**  
     Operations & Revenue Leader  
@@ -215,14 +203,10 @@ with st.sidebar:
     """)
     st.divider()
     st.markdown("### Connect")
-    st.link_button("🐙 GitHub Profile", GITHUB_PROFILE, use_container_width=True)
-    st.link_button("💼 LinkedIn Profile", LINKEDIN_URL, use_container_width=True)
+    st.link_button("GitHub Profile", GITHUB_PROFILE, use_container_width=True)
+    st.link_button("LinkedIn Profile", LINKEDIN_URL, use_container_width=True)
     if RESUME_LINK.startswith("http"):
-        st.link_button("📄 Resume", RESUME_LINK, use_container_width=True)
-
-# -----------------------------
-# Hero
-# -----------------------------
+        st.link_button("Resume", RESUME_LINK, use_container_width=True)
 
 st.markdown(
     """
@@ -233,12 +217,10 @@ st.markdown(
             A focused portfolio of AI-assisted workflow tools built to improve visibility, follow-up discipline,
             candidate screening, process documentation, manager reporting, and decision support for growing teams.
         </div>
-        <div class="hero-pills">
-            <span>Operations</span><span>RevOps</span><span>Workflow Automation</span><span>Python</span><span>Streamlit</span>
-        </div>
+        <div class="hero-pills"><span>Operations</span><span>RevOps</span><span>Workflow Automation</span><span>Python</span><span>Streamlit</span></div>
     </div>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
 stat_col1, stat_col2, stat_col3, stat_col4 = st.columns(4)
@@ -251,10 +233,6 @@ with stat_col3:
 with stat_col4:
     stat_card("Focus", "AI Operations")
 
-# -----------------------------
-# Practical next steps
-# -----------------------------
-
 st.markdown('<div class="section-title">Start here</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">For hiring managers, recruiters, or consulting prospects, these are the fastest ways to evaluate the work.</div>', unsafe_allow_html=True)
 link_col1, link_col2, link_col3 = st.columns(3)
@@ -264,10 +242,6 @@ with link_col2:
     practical_link_card("Connect professionally", "View background, current positioning, and reach out regarding operations, AI workflow, or RevOps opportunities.", "Open LinkedIn Profile", LINKEDIN_URL)
 with link_col3:
     practical_link_card("Use the live tools", "Test the working Streamlit apps directly in the browser. Start with the project most relevant to your business problem.", "Open OpsPilot AI", OPSPILOT_LIVE)
-
-# -----------------------------
-# Best project by use case
-# -----------------------------
 
 st.markdown('<div class="section-title">Best project by use case</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">Each tool solves a different operating problem. This section helps visitors quickly find the most relevant project.</div>', unsafe_allow_html=True)
@@ -279,24 +253,16 @@ with use_col2:
     usecase_card("Need stronger follow-up?", "FollowUpPilot AI", "Use this to generate customer messages, CRM notes, objection guidance, and multi-touch follow-up plans.")
     usecase_card("Need process documentation?", "SOPPilot AI", "Use this to convert rough process notes into SOPs, checklists, training plans, and quality controls.")
 
-# -----------------------------
-# Overview
-# -----------------------------
-
 st.markdown('<div class="section-title">Executive summary</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">This toolkit connects business operations experience with hands-on AI workflow implementation. Each project starts with a repeated operational pain point, maps the decision logic, and produces manager-ready outputs that can be used in the field.</div>', unsafe_allow_html=True)
 
 biz_col, tech_col = st.columns(2)
 with biz_col:
-    st.markdown("""<div class="info-card"><h3>Business Operations</h3><ul><li>KPI reporting and manager visibility</li><li>Sales follow-up and CRM discipline</li><li>Candidate screening and hiring support</li><li>SOP, checklist, and training generation</li><li>Process improvement and accountability systems</li></ul></div>""", unsafe_allow_html=True)
+    st.markdown('<div class="info-card"><h3>Business Operations</h3><ul><li>KPI reporting and manager visibility</li><li>Sales follow-up and CRM discipline</li><li>Candidate screening and hiring support</li><li>SOP, checklist, and training generation</li><li>Process improvement and accountability systems</li></ul></div>', unsafe_allow_html=True)
 with tech_col:
-    st.markdown("""<div class="info-card"><h3>AI Workflow Implementation</h3><ul><li>Python and Streamlit app development</li><li>Rules-based AI-style workflow logic</li><li>Data-driven decision support</li><li>Downloadable Markdown reporting</li><li>GitHub documentation and live deployments</li></ul></div>""", unsafe_allow_html=True)
+    st.markdown('<div class="info-card"><h3>AI Workflow Implementation</h3><ul><li>Python and Streamlit app development</li><li>Rules-based AI-style workflow logic</li><li>Data-driven decision support</li><li>Downloadable Markdown reporting</li><li>GitHub documentation and live deployments</li></ul></div>', unsafe_allow_html=True)
 
 st.markdown('<div class="note-box">Public demo note: all sample data, names, companies, and scenarios are fictional and created for portfolio demonstration.</div>', unsafe_allow_html=True)
-
-# -----------------------------
-# Project spotlight
-# -----------------------------
 
 st.markdown('<div class="section-title">Project spotlight</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">Rather than using rotating cards that hide information, this selector lets visitors quickly focus on the project most relevant to them.</div>', unsafe_allow_html=True)
@@ -315,7 +281,7 @@ st.markdown(
         <p><strong>Tech:</strong> {spotlight['tech']}</p>
     </div>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 spot_col1, spot_col2 = st.columns(2)
 with spot_col1:
@@ -323,16 +289,8 @@ with spot_col1:
 with spot_col2:
     safe_link_button(f"View {selected_project} on GitHub", spotlight["github"])
 
-# -----------------------------
-# Story
-# -----------------------------
-
 st.markdown('<div class="section-title">Portfolio story</div>', unsafe_allow_html=True)
-st.markdown("""<div class="section-lede">The toolkit was built around four connected business problems: managers need performance visibility, sales teams need follow-up discipline, hiring teams need consistent screening, and growing teams need clearer process documentation. Together, the projects demonstrate a practical AI Ops approach without relying on enterprise software.</div>""", unsafe_allow_html=True)
-
-# -----------------------------
-# Projects
-# -----------------------------
+st.markdown('<div class="section-lede">The toolkit was built around four connected business problems: managers need performance visibility, sales teams need follow-up discipline, hiring teams need consistent screening, and growing teams need clearer process documentation. Together, the projects demonstrate a practical AI Ops approach without relying on enterprise software.</div>', unsafe_allow_html=True)
 
 st.markdown('<div class="section-title">Project portfolio</div>', unsafe_allow_html=True)
 project_col1, project_col2 = st.columns(2)
@@ -350,49 +308,26 @@ with project_col4:
     p = PROJECTS["SOPPilot AI"]
     project_card("SOPPilot AI", p["category"], p["problem"], p["outcome"], p["features"], p["tech"], p["live"], p["github"])
 
-# -----------------------------
-# Roadmap
-# -----------------------------
-
 st.markdown('<div class="section-title">Toolkit roadmap</div>', unsafe_allow_html=True)
 roadmap_col1, roadmap_col2 = st.columns(2)
 with roadmap_col1:
-    st.markdown("""<div class="roadmap-card"><h3>Near-Term Upgrades</h3><ul><li>Improve dashboards and charts</li><li>Add adjustable goal targets</li><li>Add richer export formats</li><li>Add stronger role-specific templates</li><li>Refine screenshots and case studies</li></ul></div>""", unsafe_allow_html=True)
+    st.markdown('<div class="roadmap-card"><h3>Near-Term Upgrades</h3><ul><li>Improve dashboards and charts</li><li>Add adjustable goal targets</li><li>Add richer export formats</li><li>Add stronger role-specific templates</li><li>Refine screenshots and case studies</li></ul></div>', unsafe_allow_html=True)
 with roadmap_col2:
-    st.markdown("""<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Optional OpenAI API integrations</li><li>PDF export capability</li><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>ClientOps Intake AI diagnostic app</li></ul></div>""", unsafe_allow_html=True)
-
-# -----------------------------
-# Positioning + Connect
-# -----------------------------
+    st.markdown('<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Optional OpenAI API integrations</li><li>PDF export capability</li><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>ClientOps Intake AI diagnostic app</li></ul></div>', unsafe_allow_html=True)
 
 st.markdown('<div class="section-title">Career / consulting positioning</div>', unsafe_allow_html=True)
-st.markdown("""<div class="section-lede">This portfolio supports a focused direction in <strong>AI Operations, Workflow Automation, RevOps, and Process Improvement</strong>. The projects show a repeatable approach: identify an operational pain point, map the workflow, build a working tool, generate manager-ready outputs, and document the work through live demos and GitHub case studies.</div>""", unsafe_allow_html=True)
-
-st.markdown(
-    """
-    <div class="available-card">
-        <h3>Available for</h3>
-        <ul>
-            <li>Operations leadership roles</li>
-            <li>Revenue operations roles</li>
-            <li>AI workflow automation roles</li>
-            <li>Process improvement roles</li>
-            <li>Small-business AI consulting projects</li>
-        </ul>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.markdown('<div class="section-lede">This portfolio supports a focused direction in <strong>AI Operations, Workflow Automation, RevOps, and Process Improvement</strong>. The projects show a repeatable approach: identify an operational pain point, map the workflow, build a working tool, generate manager-ready outputs, and document the work through live demos and GitHub case studies.</div>', unsafe_allow_html=True)
+st.markdown('<div class="available-card"><h3>Available for</h3><ul><li>Operations leadership roles</li><li>Revenue operations roles</li><li>AI workflow automation roles</li><li>Process improvement roles</li><li>Small-business AI consulting projects</li></ul></div>', unsafe_allow_html=True)
 
 connect_col1, connect_col2, connect_col3 = st.columns(3)
 with connect_col1:
-    safe_link_button("💼 LinkedIn Profile", LINKEDIN_URL)
+    safe_link_button("LinkedIn Profile", LINKEDIN_URL)
 with connect_col2:
-    safe_link_button("🐙 GitHub Profile", GITHUB_PROFILE)
+    safe_link_button("GitHub Profile", GITHUB_PROFILE)
 with connect_col3:
     if RESUME_LINK.startswith("http"):
-        safe_link_button("📄 Resume", RESUME_LINK)
+        safe_link_button("Resume", RESUME_LINK)
     else:
-        st.button("📄 Resume Link Pending", disabled=True, use_container_width=True)
+        st.button("Resume Link Pending", disabled=True, use_container_width=True)
 
-st.markdown("""<div class="final-cta"><h2>Practical AI tools built to solve real operational problems.</h2><p>Operations visibility. Sales execution. Hiring consistency. Process documentation.</p></div>""", unsafe_allow_html=True)
+st.markdown('<div class="final-cta"><h2>Practical AI tools built to solve real operational problems.</h2><p>Operations visibility. Sales execution. Hiring consistency. Process documentation.</p></div>', unsafe_allow_html=True)
