@@ -412,30 +412,31 @@ def practical_link_card(title, body, primary_label, primary_url):
 # Sidebar
 # -----------------------------
 
-st.sidebar.title("Practical AI Ops Toolkit")
-st.sidebar.caption("Executive Portfolio v2.3")
-st.sidebar.markdown("""
-**Bradley Hankins**  
-Operations & Revenue Leader  
-AI Workflow Automation  
-RevOps & Process Improvement
-""")
-st.sidebar.divider()
-st.sidebar.markdown("### Best starting points")
-safe_link_button("View GitHub Profile", GITHUB_PROFILE)
-safe_link_button("Connect on LinkedIn", LINKEDIN_URL)
-if RESUME_LINK.startswith("http"):
-    safe_link_button("View Resume", RESUME_LINK)
-st.sidebar.divider()
-st.sidebar.markdown("### Toolkit Focus")
-st.sidebar.markdown("""
-- Operations visibility
-- Sales execution
-- Recruiting workflows
-- Process documentation
-- Manager reporting
-- Decision support
-""")
+with st.sidebar:
+    st.title("Practical AI Ops Toolkit")
+    st.caption("Executive Portfolio v2.4")
+    st.markdown("""
+    **Bradley Hankins**  
+    Operations & Revenue Leader  
+    AI Workflow Automation  
+    RevOps & Process Improvement
+    """)
+    st.divider()
+    st.markdown("### Toolkit Focus")
+    st.markdown("""
+    - Operations visibility
+    - Sales execution
+    - Recruiting workflows
+    - Process documentation
+    - Manager reporting
+    - Decision support
+    """)
+    st.divider()
+    st.markdown("### Connect")
+    st.link_button("GitHub Profile", GITHUB_PROFILE, use_container_width=True)
+    st.link_button("LinkedIn Profile", LINKEDIN_URL, use_container_width=True)
+    if RESUME_LINK.startswith("http"):
+        st.link_button("Resume", RESUME_LINK, use_container_width=True)
 
 # -----------------------------
 # Hero
