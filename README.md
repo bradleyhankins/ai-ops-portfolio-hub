@@ -7,8 +7,8 @@ The portfolio demonstrates practical AI applications for:
 - Operations visibility
 - Sales follow-up execution
 - CRM workflow discipline
-- Candidate screening
-- Hiring consistency
+- ATS Lite resume review workflows
+- Human-review hiring documentation
 - SOP and training documentation
 - Manager decision support
 
@@ -28,7 +28,7 @@ AI-assisted sales follow-up workflow assistant that turns customer context into 
 
 ### RecruitPilot AI
 
-AI-assisted candidate screening workflow tool that generates fit scores, risk levels, green flags, red flags, follow-up interview questions, interview scorecards, manager notes, candidate emails, onboarding plans, and downloadable candidate review reports.
+Responsible ATS Lite resume review assistant that organizes job descriptions and resume text into review priorities, resume match signals, missing or unclear information, follow-up interview questions, manager summaries, candidate emails, and downloadable review packets for human review.
 
 ### SOPPilot AI
 
@@ -36,29 +36,7 @@ AI-assisted SOP, checklist, and training document generator that turns rough pro
 
 ## Screenshots
 
-### Portfolio Header
-
-![Practical AI Ops Toolkit Header](screenshots/portfolio-header.png)
-
-### Portfolio Story
-
-![Practical AI Ops Toolkit Story](screenshots/portfolio-story.png)
-
-### OpsPilot AI Project Card
-
-![OpsPilot AI Project Card](screenshots/opspilot-card.png)
-
-### FollowUpPilot AI Project Card
-
-![FollowUpPilot AI Project Card](screenshots/followuppilot-card.png)
-
-### RecruitPilot AI Project Card
-
-![RecruitPilot AI Project Card](screenshots/recruitpilot-card.png)
-
-### Skills and Positioning
-
-![Practical AI Ops Toolkit Skills and Positioning](screenshots/skills-positioning.png)
+Screenshots will be refreshed after all portfolio apps are upgraded.
 
 ## Portfolio Purpose
 
@@ -68,7 +46,7 @@ The focus is practical execution:
 
 - Better visibility
 - Better follow-up
-- Better hiring workflows
+- Better applicant review organization
 - Better process documentation
 - Better training consistency
 - Better manager documentation
@@ -106,6 +84,10 @@ py -m streamlit run app.py
 ## Public Demo Note
 
 All sample data, names, companies, and scenarios used in these projects are fictional and created for public portfolio demonstration purposes.
+
+## Responsible AI Note
+
+RecruitPilot AI is designed to organize applicant information for human review. It should not be used as the sole basis for selection, rejection, compensation, or employment decisions.
 
 ## Built By
 
