@@ -8,9 +8,9 @@ The portfolio demonstrates practical AI applications for:
 - Sales follow-up execution
 - CRM workflow discipline
 - ATS Lite resume review workflows
-- Human-review hiring documentation
+- Human-review applicant documentation
 - SOP and training documentation
-- Manager decision support
+- Manager reporting and decision support
 
 ## Live Demo
 
@@ -20,11 +20,11 @@ The portfolio demonstrates practical AI applications for:
 
 ### OpsPilot AI
 
-AI-assisted operations intelligence dashboard that converts field-sales activity into KPI reporting, rep performance insights, lead source analysis, AI-style diagnosis, manager briefs, weekly sales meeting agendas, and downloadable reports.
+Operations intelligence dashboard that converts field-sales activity into KPI visibility, rep performance insights, lead source analysis, operations diagnosis, manager briefs, weekly sales meeting agendas, and downloadable manager reports.
 
 ### FollowUpPilot AI
 
-AI-assisted sales follow-up workflow assistant that turns customer context into next-best actions, lead temperature, deal risk scoring, customer text messages, emails, voicemail scripts, CRM notes, call scripts, objection guidance, manager coaching notes, follow-up sequences, and downloadable follow-up plans.
+Sales follow-up workflow assistant that turns customer context into next-best actions, lead temperature, deal risk scoring, customer text messages, emails, voicemail scripts, CRM notes, call scripts, objection guidance, manager coaching notes, follow-up sequences, and downloadable follow-up plans.
 
 ### RecruitPilot AI
 
@@ -32,11 +32,11 @@ Responsible ATS Lite resume review assistant that organizes job descriptions and
 
 ### SOPPilot AI
 
-AI-assisted SOP, checklist, and training document generator that turns rough process notes into SOPs, process checklists, missing-information checks, risk diagnoses, training plans, quality control guides, implementation plans, and downloadable SOP packages.
+Process documentation workflow assistant that turns rough process notes into SOPs, process checklists, missing-information checks, risk diagnoses, rollout readiness guidance, manager summaries, training plans, quality control guides, implementation plans, and downloadable SOP packages.
 
 ## Screenshots
 
-Screenshots will be refreshed after all portfolio apps are upgraded.
+Screenshots will be refreshed after all portfolio apps are upgraded and visually verified.
 
 ## Portfolio Purpose
 
@@ -61,18 +61,20 @@ The focus is practical execution:
 - Streamlit Community Cloud
 - Markdown report exports
 - CSV-based workflows
+- Rules-based workflow logic
 
 ## Roadmap
 
 Planned improvements include:
 
-- Richer dashboards and charts
-- Adjustable goal targets
-- PDF export options
+- Final screenshot refresh across all repositories
+- Richer export formats
+- Optional PDF export capability
 - Optional OpenAI API integrations
 - Multi-record upload workflows
 - Team-level reporting
 - ClientOps Intake AI diagnostic app
+- Packaged small-business workflow toolkit
 
 ## Run Locally
 
