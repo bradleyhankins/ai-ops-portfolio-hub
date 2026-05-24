@@ -44,6 +44,14 @@ PROJECTS = {
     },
 }
 
+TOOL_SELECTOR = {
+    "I need better manager visibility": "OpsPilot AI",
+    "I need stronger sales follow-up": "FollowUpPilot AI",
+    "I need to review applicants": "RecruitPilot AI",
+    "I need to document a process": "SOPPilot AI",
+    "I want to view the full portfolio": "OpsPilot AI",
+}
+
 CSS = """
 <style>
 .block-container{max-width:1180px;padding-top:1.35rem;padding-bottom:3rem}
@@ -70,23 +78,18 @@ CSS = """
 """
 st.markdown(CSS, unsafe_allow_html=True)
 
-
 def link_button(label: str, url: str) -> None:
     st.link_button(label, url, use_container_width=True)
-
 
 def sidebar_link(label: str, url: str) -> None:
     st.markdown(f'<a class="sidebar-link" href="{url}" target="_blank" rel="noopener noreferrer">{label}</a>', unsafe_allow_html=True)
 
-
 def stat_card(label: str, value: str) -> None:
     st.markdown(f'<div class="stat-card"><div class="stat-label">{label}</div><div class="stat-value">{value}</div></div>', unsafe_allow_html=True)
 
-
 def project_card(name: str, project: dict) -> None:
     feature_html = "".join(f"<span class='feature-chip'>{feature}</span>" for feature in project["features"])
-    st.markdown(
-        f"""
+    st.markdown(f"""
         <div class="project-card">
             <div class="project-topline"><h3 class="project-title">{name}</h3><span class="status-pill">Live</span></div>
             <div class="project-category">{project['category']}</div>
@@ -94,23 +97,18 @@ def project_card(name: str, project: dict) -> None:
             <div class="feature-wrap">{feature_html}</div>
             <div class="tech-line">{project['tech']}</div>
         </div>
-        """,
-        unsafe_allow_html=True,
-    )
+        """, unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     with col1:
         link_button("Live Demo", project["live"])
     with col2:
         link_button("GitHub", project["github"])
 
-
 def card(title: str, body: str, css_class: str = "link-card") -> None:
     st.markdown(f'<div class="{css_class}"><h3>{title}</h3><p>{body}</p></div>', unsafe_allow_html=True)
 
-
 def usecase_card(need: str, project: str, result: str) -> None:
     st.markdown(f'<div class="usecase-card"><h3>{need}</h3><p><strong>{project}</strong></p><p>{result}</p></div>', unsafe_allow_html=True)
-
 
 with st.sidebar:
     st.title("Practical AI Ops Toolkit")
@@ -142,9 +140,25 @@ with c2: stat_card("Primary Stack", "Python + Streamlit")
 with c3: stat_card("Outputs", "Dashboards + Reports")
 with c4: stat_card("Focus", "AI Operations")
 
+st.markdown('<div class="section-title">Which tool should I use?</div>', unsafe_allow_html=True)
+st.markdown('<div class="section-lede">Choose the business problem you are trying to solve and the toolkit will point you to the best starting app.</div>', unsafe_allow_html=True)
+need = st.selectbox("Business need", list(TOOL_SELECTOR.keys()))
+recommended_name = TOOL_SELECTOR[need]
+recommended = PROJECTS[recommended_name]
+st.markdown(f"""
+<div class="spotlight-card">
+    <h3>Recommended: {recommended_name}</h3>
+    <p><strong>{recommended['category']}</strong></p>
+    <p>{recommended['summary']}</p>
+    <p><strong>Best for:</strong> {recommended['best_for']}</p>
+</div>
+""", unsafe_allow_html=True)
+r1, r2 = st.columns(2)
+with r1: link_button(f"Launch {recommended_name}", recommended["live"])
+with r2: link_button(f"View {recommended_name} on GitHub", recommended["github"])
+
 st.markdown('<div class="section-title">Start here</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">For hiring managers, recruiters, or consulting prospects, these are the fastest ways to evaluate the work.</div>', unsafe_allow_html=True)
-
 s1, s2, s3 = st.columns(3)
 with s1:
     card("Review the full code portfolio", "See the repositories, README files, case studies, and project structure behind each deployed app.")
@@ -158,7 +172,6 @@ with s3:
 
 st.markdown('<div class="section-title">Best project by use case</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">Each tool solves a different operating problem. This section helps visitors quickly find the most relevant project.</div>', unsafe_allow_html=True)
-
 u1, u2 = st.columns(2)
 with u1:
     usecase_card("Need performance visibility?", "OpsPilot AI", "Review KPIs, rep performance, lead source quality, and manager action items.")
@@ -167,9 +180,14 @@ with u2:
     usecase_card("Need stronger follow-up?", "FollowUpPilot AI", "Generate next-best actions, customer communication, CRM notes, deal-risk context, and multi-touch follow-up plans.")
     usecase_card("Need process documentation?", "SOPPilot AI", "Convert rough process notes into SOPs, checklists, training plans, quality controls, and rollout guidance.")
 
+st.markdown('<div class="section-title">How this portfolio was built</div>', unsafe_allow_html=True)
+b1, b2, b3 = st.columns(3)
+with b1: card("1. Find repeatable pain", "Each app starts with a recurring business workflow problem: reporting, follow-up, applicant review, or documentation.")
+with b2: card("2. Map the workflow", "The process is converted into inputs, decision rules, outputs, and manager-ready documentation.")
+with b3: card("3. Ship a working tool", "Each project is deployed as a Streamlit app with sample data, GitHub documentation, and downloadable outputs.")
+
 st.markdown('<div class="section-title">Executive summary</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">This toolkit connects business operations experience with hands-on AI workflow implementation. Each project starts with a repeated operational pain point, maps the workflow, and produces manager-ready outputs that can be used in the field.</div>', unsafe_allow_html=True)
-
 x1, x2 = st.columns(2)
 with x1:
     st.markdown('<div class="info-card"><h3>Business Operations</h3><ul><li>KPI reporting and manager visibility</li><li>Sales follow-up and CRM discipline</li><li>ATS Lite applicant review organization</li><li>SOP, checklist, and training generation</li><li>Process improvement and accountability systems</li></ul></div>', unsafe_allow_html=True)
@@ -219,7 +237,6 @@ with r2:
 st.markdown('<div class="section-title">Career / consulting positioning</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">This portfolio supports a focused direction in <strong>AI Operations, Workflow Automation, RevOps, and Process Improvement</strong>. The projects show a repeatable approach: identify an operational pain point, map the workflow, build a working tool, generate manager-ready outputs, and document the work through live demos and GitHub case studies.</div>', unsafe_allow_html=True)
 st.markdown('<div class="available-card"><h3>Available for</h3><ul><li>Operations leadership roles</li><li>Revenue operations roles</li><li>AI workflow automation roles</li><li>Process improvement roles</li><li>Small-business AI consulting projects</li></ul></div>', unsafe_allow_html=True)
-
 ct1, ct2 = st.columns(2)
 with ct1: link_button("LinkedIn Profile", LINKEDIN_URL)
 with ct2: link_button("GitHub Profile", GITHUB_PROFILE)
