@@ -38,14 +38,16 @@ Process documentation workflow assistant that turns rough process notes into SOP
 
 1. Launch the live portfolio hub.
 2. Review the hero section and project summary cards.
-3. Use the “Best project by use case” section to choose a workflow.
+3. Use the “Which tool should I use?” section to choose a workflow.
 4. Test the project spotlight dropdown for all four projects.
 5. Open at least one live demo and one GitHub repository link.
 6. Review the roadmap and positioning sections.
 
 ## Screenshots
 
-Screenshots will be refreshed after all portfolio apps are visually verified.
+### Tool Selector and Portfolio Overview
+
+![Practical AI Ops Toolkit Tool Selector](screenshots/portfolio-tool-selector.svg)
 
 ## Portfolio Purpose
 
