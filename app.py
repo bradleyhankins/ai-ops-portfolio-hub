@@ -21,12 +21,12 @@ PROJECTS = {
     "OpsPilot AI": {
         "category": "Operations Intelligence Dashboard",
         "problem": "Managers often have activity data but lack a clear action plan.",
-        "outcome": "Turns sales activity into KPIs, coaching priorities, manager briefs, and downloadable reports.",
+        "outcome": "Turns sales activity into KPI visibility, rep performance insights, lead source analysis, manager priorities, briefs, agendas, and downloadable reports.",
         "features": [
-            "KPI dashboard",
+            "Executive KPI dashboard",
             "Rep and lead source analysis",
-            "AI-style operations diagnosis",
-            "Manager brief and meeting agenda",
+            "Operations diagnosis",
+            "Manager brief and weekly agenda",
             "Downloadable manager report",
         ],
         "tech": "Python • Streamlit • Pandas • CSV workflow",
@@ -35,15 +35,15 @@ PROJECTS = {
         "best_for": "Operations, RevOps, performance visibility, manager reporting",
     },
     "FollowUpPilot AI": {
-        "category": "Sales Follow-Up Workflow Tool",
-        "problem": "Sales opportunities are lost when follow-up is slow or poorly documented.",
-        "outcome": "Standardizes customer communication, CRM notes, objection handling, and follow-up sequences.",
+        "category": "Sales Follow-Up Workflow Assistant",
+        "problem": "Sales opportunities are lost when follow-up is slow, inconsistent, or poorly documented.",
+        "outcome": "Turns customer context into next-best actions, lead temperature, deal risk, customer communication, CRM notes, coaching guidance, and follow-up sequences.",
         "features": [
-            "Priority score",
-            "Text and email generator",
-            "CRM note and call script",
-            "Objection guidance",
-            "Multi-touch follow-up plan",
+            "Sample scenario loader",
+            "Next-best-action logic",
+            "Lead temperature and deal risk",
+            "Text, email, and voicemail scripts",
+            "Downloadable follow-up plan",
         ],
         "tech": "Python • Streamlit • Workflow logic • Markdown export",
         "live": "https://followuppilot-ai.streamlit.app/",
@@ -51,29 +51,29 @@ PROJECTS = {
         "best_for": "Sales execution, CRM discipline, follow-up workflows",
     },
     "RecruitPilot AI": {
-        "category": "Candidate Screening Workflow Tool",
-        "problem": "Small businesses often hire from scattered notes and inconsistent interviews.",
-        "outcome": "Creates structured candidate reviews, fit scores, risk levels, scorecards, and onboarding plans.",
+        "category": "ATS Lite Resume Review Assistant",
+        "problem": "Small businesses often review applicants from scattered resumes, pasted job descriptions, and inconsistent notes.",
+        "outcome": "Organizes job descriptions and resume text into review priorities, match signals, missing information, follow-up questions, manager summaries, and candidate emails for human review.",
         "features": [
-            "Candidate fit score",
-            "Risk level and recommendation",
-            "Green and red flags",
-            "Interview questions and scorecard",
-            "Downloadable candidate report",
+            "Job description and resume input",
+            "Optional .txt / .md resume upload",
+            "Review priority labels",
+            "Resume match signals",
+            "Downloadable review packet",
         ],
-        "tech": "Python • Streamlit • Screening logic • Markdown export",
+        "tech": "Python • Streamlit • Keyword logic • Markdown export",
         "live": "https://recruitpilot-ai.streamlit.app/",
         "github": "https://github.com/bradleyhankins/recruitpilot-ai",
-        "best_for": "Hiring consistency, interview structure, onboarding preparation",
+        "best_for": "ATS Lite workflows, resume review organization, interview preparation",
     },
     "SOPPilot AI": {
-        "category": "SOP & Training Document Generator",
+        "category": "Process Documentation Workflow Assistant",
         "problem": "Teams rely on tribal knowledge, verbal instructions, and inconsistent documentation.",
-        "outcome": "Turns rough process notes into SOPs, checklists, training plans, quality guides, and rollout plans.",
+        "outcome": "Turns rough process notes into SOPs, checklists, training plans, quality controls, rollout readiness guidance, manager summaries, and downloadable SOP packages.",
         "features": [
-            "Complexity score",
-            "Risk diagnosis",
-            "Missing-info check",
+            "Sample process scenarios",
+            "Complexity and risk diagnosis",
+            "Rollout readiness guidance",
             "SOP, checklist, and training plan",
             "Downloadable SOP package",
         ],
@@ -88,318 +88,321 @@ PROJECTS = {
 # Styling
 # -----------------------------------------------------------------------------
 
-st.markdown(
-    """
-    <style>
-    .block-container {
-        max-width: 1120px;
-        padding-top: 1.35rem;
-        padding-bottom: 3rem;
-    }
+CUSTOM_CSS = """
+<style>
+.block-container {
+    max-width: 1120px;
+    padding-top: 1.35rem;
+    padding-bottom: 3rem;
+}
 
-    [data-testid="stSidebar"] {
-        background: #111827;
-    }
+[data-testid="stSidebar"] {
+    background: #111827;
+}
 
-    [data-testid="stSidebar"] h1,
-    [data-testid="stSidebar"] h2,
-    [data-testid="stSidebar"] h3,
-    [data-testid="stSidebar"] p,
-    [data-testid="stSidebar"] li,
-    [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] label {
-        color: #f9fafb !important;
-    }
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] li,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] label {
+    color: #f9fafb !important;
+}
 
-    .sidebar-link {
-        display: block;
-        width: 100%;
-        margin: 0.45rem 0;
-        padding: 0.78rem 0.95rem;
-        border-radius: 12px;
-        background: #f9fafb;
-        color: #111827 !important;
-        border: 1px solid #e5e7eb;
-        font-weight: 850;
-        text-align: center;
-        text-decoration: none !important;
-        box-shadow: 0 6px 16px rgba(0,0,0,.18);
-        transition: all .15s ease-in-out;
-    }
+[data-testid="stSidebar"] li::marker {
+    color: #93c5fd !important;
+}
 
-    .sidebar-link:hover {
-        background: #dbeafe;
-        border-color: #93c5fd;
-        color: #0f172a !important;
-        transform: translateY(-1px);
-    }
+.sidebar-link {
+    display: block;
+    width: 100%;
+    margin: 0.45rem 0;
+    padding: 0.78rem 0.95rem;
+    border-radius: 12px;
+    background: #f9fafb;
+    color: #111827 !important;
+    border: 1px solid #e5e7eb;
+    font-weight: 850;
+    text-align: center;
+    text-decoration: none !important;
+    box-shadow: 0 6px 16px rgba(0,0,0,.18);
+    transition: all .15s ease-in-out;
+}
 
-    .hero {
-        padding: 2rem 2rem 1.8rem;
-        border-radius: 20px;
-        background: linear-gradient(135deg, #111827 0%, #1f2937 52%, #334155 100%);
-        color: #ffffff;
-        box-shadow: 0 18px 36px rgba(17,24,39,.20);
-        margin-bottom: 1rem;
-        border: 1px solid rgba(255,255,255,.08);
-    }
+.sidebar-link:hover {
+    background: #dbeafe;
+    border-color: #93c5fd;
+    color: #0f172a !important;
+    transform: translateY(-1px);
+}
 
-    .eyebrow {
-        text-transform: uppercase;
-        letter-spacing: .13em;
-        font-size: .75rem;
-        font-weight: 800;
-        color: #93c5fd;
-        margin-bottom: .65rem;
-    }
+.hero {
+    padding: 2rem 2rem 1.8rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #111827 0%, #1f2937 52%, #334155 100%);
+    color: #ffffff;
+    box-shadow: 0 18px 36px rgba(17,24,39,.20);
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,.08);
+}
 
-    .hero-title {
-        font-size: 2.35rem;
-        line-height: 1.08;
-        font-weight: 850;
-        margin-bottom: .75rem;
-        max-width: 850px;
-    }
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    font-size: .75rem;
+    font-weight: 800;
+    color: #93c5fd;
+    margin-bottom: .65rem;
+}
 
-    .hero-subtitle {
-        font-size: 1.02rem;
-        line-height: 1.62;
-        color: #e5e7eb;
-        max-width: 900px;
-        margin-bottom: 1rem;
-    }
+.hero-title {
+    font-size: 2.35rem;
+    line-height: 1.08;
+    font-weight: 850;
+    margin-bottom: .75rem;
+    max-width: 850px;
+}
 
-    .hero-pills span {
-        display: inline-block;
-        padding: .35rem .65rem;
-        margin: .18rem .28rem .18rem 0;
-        border-radius: 999px;
-        background: rgba(255,255,255,.10);
-        border: 1px solid rgba(255,255,255,.16);
-        font-weight: 700;
-        font-size: .78rem;
-        color: #f8fafc;
-    }
+.hero-subtitle {
+    font-size: 1.02rem;
+    line-height: 1.62;
+    color: #e5e7eb;
+    max-width: 900px;
+    margin-bottom: 1rem;
+}
 
-    .stat-card {
-        height: 142px;
-        padding: 1rem;
-        border-radius: 16px;
-        background: #ffffff;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 7px 18px rgba(15,23,42,.06);
-        margin-bottom: .75rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
+.hero-pills span {
+    display: inline-block;
+    padding: .35rem .65rem;
+    margin: .18rem .28rem .18rem 0;
+    border-radius: 999px;
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.16);
+    font-weight: 700;
+    font-size: .78rem;
+    color: #f8fafc;
+}
 
-    .stat-label {
-        color: #6b7280;
-        font-size: .82rem;
-        font-weight: 750;
-        text-transform: uppercase;
-        letter-spacing: .05em;
-        margin-bottom: .6rem;
-    }
+.stat-card {
+    height: 142px;
+    padding: 1rem;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 7px 18px rgba(15,23,42,.06);
+    margin-bottom: .75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
 
-    .stat-value {
-        color: #111827;
-        font-size: 1.48rem;
-        line-height: 1.18;
-        font-weight: 850;
-        white-space: normal;
-        overflow-wrap: break-word;
-    }
+.stat-label {
+    color: #6b7280;
+    font-size: .82rem;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: .6rem;
+}
 
-    .section-title {
-        margin-top: 1.3rem;
-        margin-bottom: .55rem;
-        font-size: 1.45rem;
-        font-weight: 850;
-        color: #111827;
-    }
+.stat-value {
+    color: #111827;
+    font-size: 1.48rem;
+    line-height: 1.18;
+    font-weight: 850;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
 
-    .section-lede {
-        color: #4b5563;
-        font-size: .98rem;
-        line-height: 1.62;
-        margin-bottom: 1rem;
-        max-width: 950px;
-    }
+.section-title {
+    margin-top: 1.3rem;
+    margin-bottom: .55rem;
+    font-size: 1.45rem;
+    font-weight: 850;
+    color: #111827;
+}
 
-    .info-card,
-    .roadmap-card,
-    .spotlight-card,
-    .link-card,
-    .usecase-card,
-    .available-card,
-    .project-card {
-        background: #ffffff;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 8px 20px rgba(15,23,42,.055);
-    }
+.section-lede {
+    color: #4b5563;
+    font-size: .98rem;
+    line-height: 1.62;
+    margin-bottom: 1rem;
+    max-width: 950px;
+}
 
-    .info-card,
-    .roadmap-card,
-    .spotlight-card,
-    .link-card,
-    .usecase-card,
-    .available-card {
-        padding: 1.2rem;
-        border-radius: 18px;
-    }
+.info-card,
+.roadmap-card,
+.spotlight-card,
+.link-card,
+.usecase-card,
+.available-card,
+.project-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 20px rgba(15,23,42,.055);
+}
 
-    .info-card { min-height: 215px; }
-    .roadmap-card { min-height: 235px; }
-    .spotlight-card { margin-bottom: .75rem; border-left: 5px solid #1d4ed8; }
-    .link-card { min-height: 180px; border-top: 4px solid #111827; }
-    .usecase-card { min-height: 150px; border-left: 4px solid #1d4ed8; margin-bottom: .75rem; }
-    .available-card { border-top: 4px solid #111827; }
+.info-card,
+.roadmap-card,
+.spotlight-card,
+.link-card,
+.usecase-card,
+.available-card {
+    padding: 1.2rem;
+    border-radius: 18px;
+}
 
-    .info-card h3,
-    .roadmap-card h3,
-    .spotlight-card h3,
-    .link-card h3,
-    .usecase-card h3,
-    .available-card h3 {
-        font-size: 1.05rem;
-        font-weight: 850;
-        color: #111827;
-        margin-bottom: .5rem;
-    }
+.info-card { min-height: 215px; }
+.roadmap-card { min-height: 235px; }
+.spotlight-card { margin-bottom: .75rem; border-left: 5px solid #1d4ed8; }
+.link-card { min-height: 180px; border-top: 4px solid #111827; }
+.usecase-card { min-height: 150px; border-left: 4px solid #1d4ed8; margin-bottom: .75rem; }
+.available-card { border-top: 4px solid #111827; }
 
-    .info-card li,
-    .roadmap-card li,
-    .spotlight-card li,
-    .available-card li {
-        color: #4b5563;
-        line-height: 1.48;
-        font-size: .92rem;
-        margin-bottom: .18rem;
-    }
+.info-card h3,
+.roadmap-card h3,
+.spotlight-card h3,
+.link-card h3,
+.usecase-card h3,
+.available-card h3 {
+    font-size: 1.05rem;
+    font-weight: 850;
+    color: #111827;
+    margin-bottom: .5rem;
+}
 
-    .link-card p,
-    .spotlight-card p,
-    .usecase-card p {
-        color: #4b5563;
-        line-height: 1.55;
-        font-size: .93rem;
-    }
+.info-card li,
+.roadmap-card li,
+.spotlight-card li,
+.available-card li {
+    color: #4b5563;
+    line-height: 1.48;
+    font-size: .92rem;
+    margin-bottom: .18rem;
+}
 
-    .usecase-card strong {
-        color: #111827;
-    }
+.link-card p,
+.spotlight-card p,
+.usecase-card p {
+    color: #4b5563;
+    line-height: 1.55;
+    font-size: .93rem;
+}
 
-    .project-card {
-        min-height: 468px;
-        margin-bottom: .65rem;
-        padding: 1.25rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 26px rgba(15,23,42,.07);
-    }
+.usecase-card strong {
+    color: #111827;
+}
 
-    .project-topline {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: .75rem;
-        margin-bottom: .45rem;
-    }
+.project-card {
+    min-height: 468px;
+    margin-bottom: .65rem;
+    padding: 1.25rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 26px rgba(15,23,42,.07);
+}
 
-    .project-title {
-        font-size: 1.22rem;
-        font-weight: 900;
-        color: #111827;
-        margin: 0;
-    }
+.project-topline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-bottom: .45rem;
+}
 
-    .project-category {
-        font-size: .8rem;
-        color: #1d4ed8;
-        font-weight: 800;
-        margin-bottom: .65rem;
-    }
+.project-title {
+    font-size: 1.22rem;
+    font-weight: 900;
+    color: #111827;
+    margin: 0;
+}
 
-    .status-pill {
-        padding: .22rem .55rem;
-        border-radius: 999px;
-        font-size: .72rem;
-        font-weight: 850;
-        color: #065f46;
-        background: #d1fae5;
-        border: 1px solid #a7f3d0;
-        white-space: nowrap;
-    }
+.project-category {
+    font-size: .8rem;
+    color: #1d4ed8;
+    font-weight: 800;
+    margin-bottom: .65rem;
+}
 
-    .card-label {
-        font-size: .7rem;
-        text-transform: uppercase;
-        letter-spacing: .08em;
-        font-weight: 850;
-        color: #6b7280;
-        margin-top: .75rem;
-        margin-bottom: .22rem;
-    }
+.status-pill {
+    padding: .22rem .55rem;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 850;
+    color: #065f46;
+    background: #d1fae5;
+    border: 1px solid #a7f3d0;
+    white-space: nowrap;
+}
 
-    .card-copy {
-        color: #374151;
-        line-height: 1.48;
-        font-size: .9rem;
-    }
+.card-label {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 850;
+    color: #6b7280;
+    margin-top: .75rem;
+    margin-bottom: .22rem;
+}
 
-    .feature-list {
-        margin: .2rem 0 0 0;
-        padding-left: 1.02rem;
-        color: #374151;
-        line-height: 1.42;
-        font-size: .88rem;
-    }
+.card-copy {
+    color: #374151;
+    line-height: 1.48;
+    font-size: .9rem;
+}
 
-    .tech-line {
-        margin-top: .8rem;
-        padding: .62rem .72rem;
-        border-radius: 12px;
-        background: #f3f4f6;
-        color: #1f2937;
-        font-size: .82rem;
-        font-weight: 760;
-    }
+.feature-list {
+    margin: .2rem 0 0 0;
+    padding-left: 1.02rem;
+    color: #374151;
+    line-height: 1.42;
+    font-size: .88rem;
+}
 
-    .note-box {
-        padding: .9rem 1rem;
-        border-radius: 14px;
-        background: #f8fafc;
-        color: #334155;
-        border: 1px solid #e2e8f0;
-        font-weight: 650;
-        margin: .95rem 0;
-        font-size: .92rem;
-    }
+.tech-line {
+    margin-top: .8rem;
+    padding: .62rem .72rem;
+    border-radius: 12px;
+    background: #f3f4f6;
+    color: #1f2937;
+    font-size: .82rem;
+    font-weight: 760;
+}
 
-    .final-cta {
-        padding: 1.4rem;
-        border-radius: 20px;
-        background: #111827;
-        color: white;
-        margin-top: 1.25rem;
-        text-align: center;
-    }
+.note-box {
+    padding: .9rem 1rem;
+    border-radius: 14px;
+    background: #f8fafc;
+    color: #334155;
+    border: 1px solid #e2e8f0;
+    font-weight: 650;
+    margin: .95rem 0;
+    font-size: .92rem;
+}
 
-    .final-cta h2 {
-        color: white;
-        margin-bottom: .3rem;
-        font-size: 1.35rem;
-    }
+.final-cta {
+    padding: 1.4rem;
+    border-radius: 20px;
+    background: #111827;
+    color: white;
+    margin-top: 1.25rem;
+    text-align: center;
+}
 
-    .final-cta p {
-        color: #d1d5db;
-        margin-bottom: 0;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+.final-cta h2 {
+    color: white;
+    margin-bottom: .3rem;
+    font-size: 1.35rem;
+}
+
+.final-cta p {
+    color: #d1d5db;
+    margin-bottom: 0;
+}
+</style>
+"""
+
+st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
 # Helper functions
@@ -487,7 +490,7 @@ with st.sidebar:
         """
         - Operations visibility
         - Sales execution
-        - Recruiting workflows
+        - ATS Lite workflows
         - Process documentation
         - Manager reporting
         - Decision support
@@ -509,7 +512,7 @@ st.markdown(
         <div class="hero-title">Practical AI tools for operational execution.</div>
         <div class="hero-subtitle">
             A focused portfolio of AI-assisted workflow tools built to improve visibility, follow-up discipline,
-            candidate screening, process documentation, manager reporting, and decision support for growing teams.
+            applicant review organization, process documentation, manager reporting, and decision support for growing teams.
         </div>
         <div class="hero-pills">
             <span>Operations</span><span>RevOps</span><span>Workflow Automation</span><span>Python</span><span>Streamlit</span>
@@ -577,20 +580,20 @@ with use_col1:
         "Use this to review KPIs, rep performance, lead source quality, and manager action items.",
     )
     usecase_card(
-        "Need hiring consistency?",
+        "Need applicant review organization?",
         "RecruitPilot AI",
-        "Use this to structure candidate reviews, interview questions, risk checks, and onboarding plans.",
+        "Use this to organize job descriptions and resume text into review priorities, match signals, missing information, and follow-up questions for human review.",
     )
 with use_col2:
     usecase_card(
         "Need stronger follow-up?",
         "FollowUpPilot AI",
-        "Use this to generate customer messages, CRM notes, objection guidance, and multi-touch follow-up plans.",
+        "Use this to generate next-best actions, customer communication, CRM notes, deal-risk context, and multi-touch follow-up plans.",
     )
     usecase_card(
         "Need process documentation?",
         "SOPPilot AI",
-        "Use this to convert rough process notes into SOPs, checklists, training plans, and quality controls.",
+        "Use this to convert rough process notes into SOPs, checklists, training plans, quality controls, and rollout guidance.",
     )
 
 # -----------------------------------------------------------------------------
@@ -599,14 +602,14 @@ with use_col2:
 
 st.markdown('<div class="section-title">Executive summary</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="section-lede">This toolkit connects business operations experience with hands-on AI workflow implementation. Each project starts with a repeated operational pain point, maps the decision logic, and produces manager-ready outputs that can be used in the field.</div>',
+    '<div class="section-lede">This toolkit connects business operations experience with hands-on AI workflow implementation. Each project starts with a repeated operational pain point, maps the workflow, and produces manager-ready outputs that can be used in the field.</div>',
     unsafe_allow_html=True,
 )
 
 summary_col1, summary_col2 = st.columns(2)
 with summary_col1:
     st.markdown(
-        '<div class="info-card"><h3>Business Operations</h3><ul><li>KPI reporting and manager visibility</li><li>Sales follow-up and CRM discipline</li><li>Candidate screening and hiring support</li><li>SOP, checklist, and training generation</li><li>Process improvement and accountability systems</li></ul></div>',
+        '<div class="info-card"><h3>Business Operations</h3><ul><li>KPI reporting and manager visibility</li><li>Sales follow-up and CRM discipline</li><li>ATS Lite applicant review organization</li><li>SOP, checklist, and training generation</li><li>Process improvement and accountability systems</li></ul></div>',
         unsafe_allow_html=True,
     )
 with summary_col2:
@@ -617,6 +620,11 @@ with summary_col2:
 
 st.markdown(
     '<div class="note-box">Public demo note: all sample data, names, companies, and scenarios are fictional and created for portfolio demonstration.</div>',
+    unsafe_allow_html=True,
+)
+
+st.markdown(
+    '<div class="note-box">Responsible AI note: RecruitPilot AI is designed to organize applicant information for human review. It should not be used as the sole basis for selection, rejection, compensation, or employment decisions.</div>',
     unsafe_allow_html=True,
 )
 
@@ -661,7 +669,7 @@ with spot_col2:
 
 st.markdown('<div class="section-title">Portfolio story</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="section-lede">The toolkit was built around four connected business problems: managers need performance visibility, sales teams need follow-up discipline, hiring teams need consistent screening, and growing teams need clearer process documentation. Together, the projects demonstrate a practical AI Ops approach without relying on enterprise software.</div>',
+    '<div class="section-lede">The toolkit was built around four connected business problems: managers need performance visibility, sales teams need follow-up discipline, growing teams need structured applicant review, and organizations need clearer process documentation. Together, the projects demonstrate a practical AI Ops approach without relying on enterprise software.</div>',
     unsafe_allow_html=True,
 )
 
@@ -687,12 +695,12 @@ st.markdown('<div class="section-title">Toolkit roadmap</div>', unsafe_allow_htm
 roadmap_col1, roadmap_col2 = st.columns(2)
 with roadmap_col1:
     st.markdown(
-        '<div class="roadmap-card"><h3>Near-Term Upgrades</h3><ul><li>Improve dashboards and charts</li><li>Add adjustable goal targets</li><li>Add richer export formats</li><li>Add stronger role-specific templates</li><li>Refine screenshots and case studies</li></ul></div>',
+        '<div class="roadmap-card"><h3>Near-Term Upgrades</h3><ul><li>Refresh screenshots across all repos</li><li>Add richer export formats</li><li>Add stronger role-specific templates</li><li>Refine case studies</li><li>Explore PDF export options</li></ul></div>',
         unsafe_allow_html=True,
     )
 with roadmap_col2:
     st.markdown(
-        '<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Optional OpenAI API integrations</li><li>PDF export capability</li><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>ClientOps Intake AI diagnostic app</li></ul></div>',
+        '<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Optional OpenAI API integrations</li><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>ClientOps Intake AI diagnostic app</li><li>Packaged small-business workflow toolkit</li></ul></div>',
         unsafe_allow_html=True,
     )
 
@@ -714,6 +722,6 @@ with contact_col2:
     link_button("GitHub Profile", GITHUB_PROFILE)
 
 st.markdown(
-    '<div class="final-cta"><h2>Practical AI tools built to solve real operational problems.</h2><p>Operations visibility. Sales execution. Hiring consistency. Process documentation.</p></div>',
+    '<div class="final-cta"><h2>Practical AI tools built to solve real operational problems.</h2><p>Operations visibility. Sales execution. Applicant review organization. Process documentation.</p></div>',
     unsafe_allow_html=True,
 )
