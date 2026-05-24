@@ -19,64 +19,40 @@ GITHUB_PROFILE = "https://github.com/bradleyhankins"
 
 PROJECTS = {
     "OpsPilot AI": {
-        "category": "Operations Intelligence Dashboard",
-        "problem": "Managers often have activity data but lack a clear action plan.",
-        "outcome": "Turns sales activity into KPI visibility, rep performance insights, lead source analysis, manager priorities, briefs, agendas, and downloadable reports.",
-        "features": [
-            "Executive KPI dashboard",
-            "Rep and lead source analysis",
-            "Operations diagnosis",
-            "Manager brief and weekly agenda",
-            "Downloadable manager report",
-        ],
+        "category": "Operations Intelligence",
+        "problem": "Managers have activity data, but not always a clear action plan.",
+        "outcome": "KPI visibility, rep insights, lead source analysis, manager briefs, agendas, and reports.",
+        "features": ["KPI Dashboard", "Rep Analysis", "Lead Sources", "Manager Brief", "Reports"],
         "tech": "Python • Streamlit • Pandas • CSV workflow",
         "live": "https://opspilot-ai.streamlit.app/",
         "github": "https://github.com/bradleyhankins/opspilot-ai",
         "best_for": "Operations, RevOps, performance visibility, manager reporting",
     },
     "FollowUpPilot AI": {
-        "category": "Sales Follow-Up Workflow Assistant",
-        "problem": "Sales opportunities are lost when follow-up is slow, inconsistent, or poorly documented.",
-        "outcome": "Turns customer context into next-best actions, lead temperature, deal risk, customer communication, CRM notes, coaching guidance, and follow-up sequences.",
-        "features": [
-            "Sample scenario loader",
-            "Next-best-action logic",
-            "Lead temperature and deal risk",
-            "Text, email, and voicemail scripts",
-            "Downloadable follow-up plan",
-        ],
+        "category": "Sales Follow-Up Workflow",
+        "problem": "Sales opportunities are lost when follow-up is inconsistent or poorly documented.",
+        "outcome": "Next-best actions, lead temperature, deal risk, customer messages, CRM notes, and follow-up plans.",
+        "features": ["Next Best Action", "Lead Temperature", "Deal Risk", "Voicemail Scripts", "Follow-Up Plan"],
         "tech": "Python • Streamlit • Workflow logic • Markdown export",
         "live": "https://followuppilot-ai.streamlit.app/",
         "github": "https://github.com/bradleyhankins/followuppilot-ai",
         "best_for": "Sales execution, CRM discipline, follow-up workflows",
     },
     "RecruitPilot AI": {
-        "category": "ATS Lite Resume Review Assistant",
-        "problem": "Small businesses often review applicants from scattered resumes, pasted job descriptions, and inconsistent notes.",
-        "outcome": "Organizes job descriptions and resume text into review priorities, match signals, missing information, follow-up questions, manager summaries, and candidate emails for human review.",
-        "features": [
-            "Job description and resume input",
-            "Optional .txt / .md resume upload",
-            "Review priority labels",
-            "Resume match signals",
-            "Downloadable review packet",
-        ],
+        "category": "ATS Lite Resume Review",
+        "problem": "Applicant review gets messy when resumes, job descriptions, and notes are scattered.",
+        "outcome": "Review priorities, resume signals, missing information, interview questions, summaries, and review packets.",
+        "features": ["Resume Input", "Review Priority", "Match Signals", "Questions", "Review Packet"],
         "tech": "Python • Streamlit • Keyword logic • Markdown export",
         "live": "https://recruitpilot-ai.streamlit.app/",
         "github": "https://github.com/bradleyhankins/recruitpilot-ai",
         "best_for": "ATS Lite workflows, resume review organization, interview preparation",
     },
     "SOPPilot AI": {
-        "category": "Process Documentation Workflow Assistant",
+        "category": "Process Documentation",
         "problem": "Teams rely on tribal knowledge, verbal instructions, and inconsistent documentation.",
-        "outcome": "Turns rough process notes into SOPs, checklists, training plans, quality controls, rollout readiness guidance, manager summaries, and downloadable SOP packages.",
-        "features": [
-            "Sample process scenarios",
-            "Complexity and risk diagnosis",
-            "Rollout readiness guidance",
-            "SOP, checklist, and training plan",
-            "Downloadable SOP package",
-        ],
+        "outcome": "SOPs, checklists, training plans, quality controls, rollout guidance, and SOP packages.",
+        "features": ["SOP Builder", "Checklists", "Training Plan", "Risk Diagnosis", "SOP Package"],
         "tech": "Python • Streamlit • Process logic • Markdown export",
         "live": "https://soppilot-ai.streamlit.app/",
         "github": "https://github.com/bradleyhankins/soppilot-ai",
@@ -126,7 +102,7 @@ CUSTOM_CSS = """
     font-weight: 850;
     text-align: center;
     text-decoration: none !important;
-    box-shadow: 0 6px 16px rgba(0,0,0,.18);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
     transition: all .15s ease-in-out;
 }
 
@@ -142,9 +118,9 @@ CUSTOM_CSS = """
     border-radius: 20px;
     background: linear-gradient(135deg, #111827 0%, #1f2937 52%, #334155 100%);
     color: #ffffff;
-    box-shadow: 0 18px 36px rgba(17,24,39,.20);
+    box-shadow: 0 18px 36px rgba(17, 24, 39, .20);
     margin-bottom: 1rem;
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255, 255, 255, .08);
 }
 
 .eyebrow {
@@ -172,29 +148,40 @@ CUSTOM_CSS = """
     margin-bottom: 1rem;
 }
 
-.hero-pills span {
+.hero-pills span,
+.feature-chip {
     display: inline-block;
+    border-radius: 999px;
+    font-weight: 750;
+}
+
+.hero-pills span {
     padding: .35rem .65rem;
     margin: .18rem .28rem .18rem 0;
-    border-radius: 999px;
-    background: rgba(255,255,255,.10);
-    border: 1px solid rgba(255,255,255,.16);
-    font-weight: 700;
+    background: rgba(255, 255, 255, .10);
+    border: 1px solid rgba(255, 255, 255, .16);
     font-size: .78rem;
     color: #f8fafc;
+}
+
+.stat-card,
+.info-card,
+.roadmap-card,
+.spotlight-card,
+.link-card,
+.usecase-card,
+.available-card,
+.project-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, .055);
 }
 
 .stat-card {
     height: 142px;
     padding: 1rem;
     border-radius: 16px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 7px 18px rgba(15,23,42,.06);
     margin-bottom: .75rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
 }
 
 .stat-label {
@@ -211,7 +198,6 @@ CUSTOM_CSS = """
     font-size: 1.48rem;
     line-height: 1.18;
     font-weight: 850;
-    white-space: normal;
     overflow-wrap: break-word;
 }
 
@@ -229,18 +215,6 @@ CUSTOM_CSS = """
     line-height: 1.62;
     margin-bottom: 1rem;
     max-width: 950px;
-}
-
-.info-card,
-.roadmap-card,
-.spotlight-card,
-.link-card,
-.usecase-card,
-.available-card,
-.project-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 8px 20px rgba(15,23,42,.055);
 }
 
 .info-card,
@@ -295,11 +269,11 @@ CUSTOM_CSS = """
 }
 
 .project-card {
-    height: 515px;
+    height: 420px;
     margin-bottom: .65rem;
-    padding: 1.25rem;
+    padding: 1.15rem;
     border-radius: 20px;
-    box-shadow: 0 10px 26px rgba(15,23,42,.07);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, .07);
     display: flex;
     flex-direction: column;
 }
@@ -309,21 +283,21 @@ CUSTOM_CSS = """
     align-items: flex-start;
     justify-content: space-between;
     gap: .75rem;
-    margin-bottom: .45rem;
+    margin-bottom: .35rem;
 }
 
 .project-title {
-    font-size: 1.22rem;
+    font-size: 1.32rem;
     font-weight: 900;
     color: #111827;
     margin: 0;
 }
 
 .project-category {
-    font-size: .8rem;
+    font-size: .82rem;
     color: #1d4ed8;
-    font-weight: 800;
-    margin-bottom: .65rem;
+    font-weight: 850;
+    margin-bottom: .85rem;
 }
 
 .status-pill {
@@ -343,22 +317,27 @@ CUSTOM_CSS = """
     letter-spacing: .08em;
     font-weight: 850;
     color: #6b7280;
-    margin-top: .75rem;
-    margin-bottom: .22rem;
+    margin-top: .58rem;
+    margin-bottom: .2rem;
 }
 
 .card-copy {
     color: #374151;
-    line-height: 1.48;
+    line-height: 1.45;
     font-size: .9rem;
 }
 
-.feature-list {
-    margin: .2rem 0 0 0;
-    padding-left: 1.02rem;
-    color: #374151;
-    line-height: 1.42;
-    font-size: .88rem;
+.feature-wrap {
+    margin-top: .35rem;
+}
+
+.feature-chip {
+    padding: .28rem .52rem;
+    margin: .17rem .18rem .17rem 0;
+    background: #f1f5f9;
+    color: #1f2937;
+    border: 1px solid #e2e8f0;
+    font-size: .74rem;
 }
 
 .tech-line {
@@ -430,7 +409,7 @@ def stat_card(label: str, value: str) -> None:
 
 
 def project_card(name: str, project: dict) -> None:
-    feature_html = "".join(f"<li>{feature}</li>" for feature in project["features"])
+    feature_html = "".join(f"<span class='feature-chip'>{feature}</span>" for feature in project["features"])
     st.markdown(
         f"""
         <div class="project-card">
@@ -439,12 +418,12 @@ def project_card(name: str, project: dict) -> None:
                 <span class="status-pill">Live</span>
             </div>
             <div class="project-category">{project['category']}</div>
-            <div class="card-label">Business Problem</div>
+            <div class="card-label">Problem</div>
             <div class="card-copy">{project['problem']}</div>
-            <div class="card-label">Operational Outcome</div>
+            <div class="card-label">What it does</div>
             <div class="card-copy">{project['outcome']}</div>
-            <div class="card-label">Core Capabilities</div>
-            <ul class="feature-list">{feature_html}</ul>
+            <div class="card-label">Capabilities</div>
+            <div class="feature-wrap">{feature_html}</div>
             <div class="tech-line">{project['tech']}</div>
         </div>
         """,
@@ -546,22 +525,13 @@ st.markdown(
 
 start_col1, start_col2, start_col3 = st.columns(3)
 with start_col1:
-    card(
-        "Review the full code portfolio",
-        "See the repositories, README files, case studies, and project structure behind each deployed app.",
-    )
+    card("Review the full code portfolio", "See the repositories, README files, case studies, and project structure behind each deployed app.")
     link_button("Open GitHub Profile", GITHUB_PROFILE)
 with start_col2:
-    card(
-        "Connect professionally",
-        "View background, current positioning, and reach out regarding operations, AI workflow, or RevOps opportunities.",
-    )
+    card("Connect professionally", "View background, current positioning, and reach out regarding operations, AI workflow, or RevOps opportunities.")
     link_button("Open LinkedIn Profile", LINKEDIN_URL)
 with start_col3:
-    card(
-        "Use the live tools",
-        "Test the working Streamlit apps directly in the browser. Start with the project most relevant to your business problem.",
-    )
+    card("Use the live tools", "Test the working Streamlit apps directly in the browser. Start with the project most relevant to your business problem.")
     link_button("Open OpsPilot AI", PROJECTS["OpsPilot AI"]["live"])
 
 # -----------------------------------------------------------------------------
@@ -569,76 +539,38 @@ with start_col3:
 # -----------------------------------------------------------------------------
 
 st.markdown('<div class="section-title">Best project by use case</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="section-lede">Each tool solves a different operating problem. This section helps visitors quickly find the most relevant project.</div>',
-    unsafe_allow_html=True,
-)
+st.markdown('<div class="section-lede">Each tool solves a different operating problem. This section helps visitors quickly find the most relevant project.</div>', unsafe_allow_html=True)
 
 use_col1, use_col2 = st.columns(2)
 with use_col1:
-    usecase_card(
-        "Need performance visibility?",
-        "OpsPilot AI",
-        "Use this to review KPIs, rep performance, lead source quality, and manager action items.",
-    )
-    usecase_card(
-        "Need applicant review organization?",
-        "RecruitPilot AI",
-        "Use this to organize job descriptions and resume text into review priorities, match signals, missing information, and follow-up questions for human review.",
-    )
+    usecase_card("Need performance visibility?", "OpsPilot AI", "Review KPIs, rep performance, lead source quality, and manager action items.")
+    usecase_card("Need applicant review organization?", "RecruitPilot AI", "Organize job descriptions and resume text into review priorities, match signals, and follow-up questions for human review.")
 with use_col2:
-    usecase_card(
-        "Need stronger follow-up?",
-        "FollowUpPilot AI",
-        "Use this to generate next-best actions, customer communication, CRM notes, deal-risk context, and multi-touch follow-up plans.",
-    )
-    usecase_card(
-        "Need process documentation?",
-        "SOPPilot AI",
-        "Use this to convert rough process notes into SOPs, checklists, training plans, quality controls, and rollout guidance.",
-    )
+    usecase_card("Need stronger follow-up?", "FollowUpPilot AI", "Generate next-best actions, customer communication, CRM notes, deal-risk context, and multi-touch follow-up plans.")
+    usecase_card("Need process documentation?", "SOPPilot AI", "Convert rough process notes into SOPs, checklists, training plans, quality controls, and rollout guidance.")
 
 # -----------------------------------------------------------------------------
 # Executive summary
 # -----------------------------------------------------------------------------
 
 st.markdown('<div class="section-title">Executive summary</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="section-lede">This toolkit connects business operations experience with hands-on AI workflow implementation. Each project starts with a repeated operational pain point, maps the workflow, and produces manager-ready outputs that can be used in the field.</div>',
-    unsafe_allow_html=True,
-)
+st.markdown('<div class="section-lede">This toolkit connects business operations experience with hands-on AI workflow implementation. Each project starts with a repeated operational pain point, maps the workflow, and produces manager-ready outputs that can be used in the field.</div>', unsafe_allow_html=True)
 
 summary_col1, summary_col2 = st.columns(2)
 with summary_col1:
-    st.markdown(
-        '<div class="info-card"><h3>Business Operations</h3><ul><li>KPI reporting and manager visibility</li><li>Sales follow-up and CRM discipline</li><li>ATS Lite applicant review organization</li><li>SOP, checklist, and training generation</li><li>Process improvement and accountability systems</li></ul></div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="info-card"><h3>Business Operations</h3><ul><li>KPI reporting and manager visibility</li><li>Sales follow-up and CRM discipline</li><li>ATS Lite applicant review organization</li><li>SOP, checklist, and training generation</li><li>Process improvement and accountability systems</li></ul></div>', unsafe_allow_html=True)
 with summary_col2:
-    st.markdown(
-        '<div class="info-card"><h3>AI Workflow Implementation</h3><ul><li>Python and Streamlit app development</li><li>Rules-based AI-style workflow logic</li><li>Data-driven decision support</li><li>Downloadable Markdown reporting</li><li>GitHub documentation and live deployments</li></ul></div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="info-card"><h3>AI Workflow Implementation</h3><ul><li>Python and Streamlit app development</li><li>Rules-based AI-style workflow logic</li><li>Data-driven decision support</li><li>Downloadable Markdown reporting</li><li>GitHub documentation and live deployments</li></ul></div>', unsafe_allow_html=True)
 
-st.markdown(
-    '<div class="note-box">Public demo note: all sample data, names, companies, and scenarios are fictional and created for portfolio demonstration.</div>',
-    unsafe_allow_html=True,
-)
-
-st.markdown(
-    '<div class="note-box">Responsible AI note: RecruitPilot AI is designed to organize applicant information for human review. It should not be used as the sole basis for selection, rejection, compensation, or employment decisions.</div>',
-    unsafe_allow_html=True,
-)
+st.markdown('<div class="note-box">Public demo note: all sample data, names, companies, and scenarios are fictional and created for portfolio demonstration.</div>', unsafe_allow_html=True)
+st.markdown('<div class="note-box">Responsible AI note: RecruitPilot AI is designed to organize applicant information for human review. It should not be used as the sole basis for selection, rejection, compensation, or employment decisions.</div>', unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
 # Project spotlight
 # -----------------------------------------------------------------------------
 
 st.markdown('<div class="section-title">Project spotlight</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="section-lede">Rather than using rotating cards that hide information, this selector lets visitors quickly focus on the project most relevant to them.</div>',
-    unsafe_allow_html=True,
-)
+st.markdown('<div class="section-lede">This selector lets visitors quickly focus on the project most relevant to them.</div>', unsafe_allow_html=True)
 
 selected_project = st.selectbox("Choose a project to spotlight", list(PROJECTS.keys()), index=0)
 spotlight = PROJECTS[selected_project]
@@ -670,10 +602,7 @@ with spot_col2:
 # -----------------------------------------------------------------------------
 
 st.markdown('<div class="section-title">Portfolio story</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="section-lede">The toolkit was built around four connected business problems: managers need performance visibility, sales teams need follow-up discipline, growing teams need structured applicant review, and organizations need clearer process documentation. Together, the projects demonstrate a practical AI Ops approach without relying on enterprise software.</div>',
-    unsafe_allow_html=True,
-)
+st.markdown('<div class="section-lede">The toolkit was built around four connected business problems: managers need performance visibility, sales teams need follow-up discipline, growing teams need structured applicant review, and organizations need clearer process documentation.</div>', unsafe_allow_html=True)
 
 st.markdown('<div class="section-title">Project portfolio</div>', unsafe_allow_html=True)
 
@@ -696,26 +625,14 @@ with project_col4:
 st.markdown('<div class="section-title">Toolkit roadmap</div>', unsafe_allow_html=True)
 roadmap_col1, roadmap_col2 = st.columns(2)
 with roadmap_col1:
-    st.markdown(
-        '<div class="roadmap-card"><h3>Near-Term Upgrades</h3><ul><li>Refresh screenshots across all repos</li><li>Add richer export formats</li><li>Add stronger role-specific templates</li><li>Refine case studies</li><li>Explore PDF export options</li></ul></div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="roadmap-card"><h3>Near-Term Upgrades</h3><ul><li>Refresh screenshots across all repos</li><li>Add richer export formats</li><li>Add stronger role-specific templates</li><li>Refine case studies</li><li>Explore PDF export options</li></ul></div>', unsafe_allow_html=True)
 with roadmap_col2:
-    st.markdown(
-        '<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Optional OpenAI API integrations</li><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>ClientOps Intake AI diagnostic app</li><li>Packaged small-business workflow toolkit</li></ul></div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Optional OpenAI API integrations</li><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>ClientOps Intake AI diagnostic app</li><li>Packaged small-business workflow toolkit</li></ul></div>', unsafe_allow_html=True)
 
 st.markdown('<div class="section-title">Career / consulting positioning</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="section-lede">This portfolio supports a focused direction in <strong>AI Operations, Workflow Automation, RevOps, and Process Improvement</strong>. The projects show a repeatable approach: identify an operational pain point, map the workflow, build a working tool, generate manager-ready outputs, and document the work through live demos and GitHub case studies.</div>',
-    unsafe_allow_html=True,
-)
+st.markdown('<div class="section-lede">This portfolio supports a focused direction in <strong>AI Operations, Workflow Automation, RevOps, and Process Improvement</strong>. The projects show a repeatable approach: identify an operational pain point, map the workflow, build a working tool, generate manager-ready outputs, and document the work through live demos and GitHub case studies.</div>', unsafe_allow_html=True)
 
-st.markdown(
-    '<div class="available-card"><h3>Available for</h3><ul><li>Operations leadership roles</li><li>Revenue operations roles</li><li>AI workflow automation roles</li><li>Process improvement roles</li><li>Small-business AI consulting projects</li></ul></div>',
-    unsafe_allow_html=True,
-)
+st.markdown('<div class="available-card"><h3>Available for</h3><ul><li>Operations leadership roles</li><li>Revenue operations roles</li><li>AI workflow automation roles</li><li>Process improvement roles</li><li>Small-business AI consulting projects</li></ul></div>', unsafe_allow_html=True)
 
 contact_col1, contact_col2 = st.columns(2)
 with contact_col1:
@@ -723,7 +640,4 @@ with contact_col1:
 with contact_col2:
     link_button("GitHub Profile", GITHUB_PROFILE)
 
-st.markdown(
-    '<div class="final-cta"><h2>Practical AI tools built to solve real operational problems.</h2><p>Operations visibility. Sales execution. Applicant review organization. Process documentation.</p></div>',
-    unsafe_allow_html=True,
-)
+st.markdown('<div class="final-cta"><h2>Practical AI tools built to solve real operational problems.</h2><p>Operations visibility. Sales execution. Applicant review organization. Process documentation.</p></div>', unsafe_allow_html=True)
