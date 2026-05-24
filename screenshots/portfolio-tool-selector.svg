@@ -1,0 +1,20 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" fill="#f8fafc"/>
+  <rect x="40" y="38" width="1360" height="250" rx="28" fill="#111827"/>
+  <text x="80" y="88" fill="#93c5fd" font-family="Arial" font-size="20" font-weight="700" letter-spacing="4">AI OPERATIONS PORTFOLIO</text>
+  <text x="80" y="155" fill="#ffffff" font-family="Arial" font-size="54" font-weight="800">Practical AI tools for operational execution.</text>
+  <text x="80" y="210" fill="#e5e7eb" font-family="Arial" font-size="25">A focused portfolio of AI-assisted workflow tools for visibility, follow-up, applicant review, process documentation, and manager reporting.</text>
+  <rect x="80" y="238" width="120" height="42" rx="21" fill="#334155"/><text x="106" y="266" fill="#fff" font-family="Arial" font-size="16" font-weight="700">Python</text>
+  <rect x="215" y="238" width="140" height="42" rx="21" fill="#334155"/><text x="242" y="266" fill="#fff" font-family="Arial" font-size="16" font-weight="700">Streamlit</text>
+  <rect x="370" y="238" width="185" height="42" rx="21" fill="#334155"/><text x="398" y="266" fill="#fff" font-family="Arial" font-size="16" font-weight="700">Workflow Apps</text>
+  <text x="40" y="350" fill="#111827" font-family="Arial" font-size="34" font-weight="800">Which tool should I use?</text>
+  <text x="40" y="388" fill="#4b5563" font-family="Arial" font-size="20">Choose the business problem and the hub recommends the best starting app.</text>
+  <rect x="40" y="420" width="1360" height="132" rx="20" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="70" y="468" fill="#111827" font-family="Arial" font-size="26" font-weight="800">Recommended: OpsPilot AI</text>
+  <text x="70" y="505" fill="#1d4ed8" font-family="Arial" font-size="18" font-weight="700">Operations Intelligence</text>
+  <text x="70" y="535" fill="#4b5563" font-family="Arial" font-size="18">KPI visibility, rep insights, lead source analysis, manager briefs, meeting agendas, and downloadable reports.</text>
+  <rect x="40" y="600" width="315" height="140" rx="20" fill="#fff" stroke="#e5e7eb"/><text x="70" y="645" fill="#6b7280" font-family="Arial" font-size="18" font-weight="700">PORTFOLIO PROJECTS</text><text x="70" y="705" fill="#111827" font-family="Arial" font-size="52" font-weight="800">4</text>
+  <rect x="390" y="600" width="315" height="140" rx="20" fill="#fff" stroke="#e5e7eb"/><text x="420" y="645" fill="#6b7280" font-family="Arial" font-size="18" font-weight="700">PRIMARY STACK</text><text x="420" y="705" fill="#111827" font-family="Arial" font-size="40" font-weight="800">Python + Streamlit</text>
+  <rect x="740" y="600" width="315" height="140" rx="20" fill="#fff" stroke="#e5e7eb"/><text x="770" y="645" fill="#6b7280" font-family="Arial" font-size="18" font-weight="700">OUTPUTS</text><text x="770" y="705" fill="#111827" font-family="Arial" font-size="40" font-weight="800">Reports + Dashboards</text>
+  <rect x="1090" y="600" width="310" height="140" rx="20" fill="#fff" stroke="#e5e7eb"/><text x="1120" y="645" fill="#6b7280" font-family="Arial" font-size="18" font-weight="700">FOCUS</text><text x="1120" y="705" fill="#111827" font-family="Arial" font-size="40" font-weight="800">AI Operations</text>
+</svg>
