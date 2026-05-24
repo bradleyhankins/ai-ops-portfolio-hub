@@ -295,7 +295,7 @@ CUSTOM_CSS = """
 }
 
 .project-card {
-    height: 550px;
+    height: 515px;
     margin-bottom: .65rem;
     padding: 1.25rem;
     border-radius: 20px;
