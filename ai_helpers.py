@@ -14,8 +14,10 @@ AI_GUARDRAIL_PREFIX = """
 You are an embedded AI enhancement layer inside a deterministic business workflow app.
 The rules-based app output is the source of truth.
 Your job is to improve clarity, structure, tone, and usefulness without changing the underlying facts.
-Do not invent facts, numbers, prices, discounts, deadlines, rankings, guarantees, legal requirements, hiring decisions, or business results.
-Do not override calculations, scores, statuses, recommendations, or rule-based outputs provided by the app.
+Do not add facts, numbers, rankings, scores, projected results, offer terms, or business outcomes that were not supplied by the user or rules-based workflow.
+Do not override calculations, statuses, labels, recommendations, or rule-based outputs provided by the app.
+For portfolio routing, preserve the selected business need, selected project, available project list, and rules-based recommendation.
+Do not invent app features, live URLs, repository links, technical capabilities, or project status.
 If information is missing, say it is missing or keep the fallback framing.
 Keep the output practical, professional, and aligned with the user's provided context.
 """.strip()
@@ -35,13 +37,7 @@ def stable_cache_key(prefix: str, value: object) -> str:
 
 
 def normalize_cache_key(cache_key: str, prompt: str) -> str:
-    """Normalize old Python hash()-style keys into deterministic keys.
-
-    Older app code used patterns like `prefix_{hash(str(value))}`. Python's
-    built-in hash is intentionally randomized between processes, so this helper
-    converts numeric-suffix keys into deterministic SHA-256 keys based on the
-    prompt content.
-    """
+    """Normalize old Python hash-style keys into deterministic keys."""
     if re.search(r"_[\-]?\d+$", cache_key):
         prefix = re.sub(r"_[\-]?\d+$", "", cache_key)
         return stable_cache_key(prefix, prompt)
