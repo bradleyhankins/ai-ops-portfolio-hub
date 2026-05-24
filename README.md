@@ -24,7 +24,7 @@ AI-assisted operations intelligence dashboard that converts field-sales activity
 
 ### FollowUpPilot AI
 
-AI-assisted sales follow-up workflow tool that generates customer text messages, emails, CRM notes, call scripts, objection guidance, manager coaching notes, follow-up sequences, and downloadable follow-up plans.
+AI-assisted sales follow-up workflow assistant that turns customer context into next-best actions, lead temperature, deal risk scoring, customer text messages, emails, voicemail scripts, CRM notes, call scripts, objection guidance, manager coaching notes, follow-up sequences, and downloadable follow-up plans.
 
 ### RecruitPilot AI
 
