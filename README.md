@@ -10,6 +10,7 @@ The portfolio demonstrates practical AI applications for:
 - ATS Lite resume review workflows
 - Human-review applicant documentation
 - SOP and training documentation
+- Client workflow diagnostics
 - Manager reporting and decision support
 
 ## Live Demo
@@ -34,12 +35,16 @@ Responsible ATS Lite resume review assistant that organizes job descriptions and
 
 Process documentation workflow assistant that turns rough process notes into SOPs, process checklists, missing-information checks, risk diagnoses, rollout readiness guidance, manager summaries, training plans, quality control guides, implementation plans, and downloadable SOP packages.
 
+### ClientOps Intake AI — Coming Next
+
+Client diagnostic intake assistant designed to identify business workflow bottlenecks, score operational maturity, recommend automation opportunities, route users to the right toolkit app, and generate a 30-day improvement roadmap.
+
 ## Suggested Test Flow
 
 1. Launch the live portfolio hub.
 2. Review the hero section and project summary cards.
 3. Use the “Which tool should I use?” section to choose a workflow.
-4. Test the project spotlight dropdown for all four projects.
+4. Test the project spotlight dropdown for all five projects, including the ClientOps roadmap card.
 5. Open at least one live demo and one GitHub repository link.
 6. Review the roadmap and positioning sections.
 
@@ -61,6 +66,7 @@ The focus is practical execution:
 - Better process documentation
 - Better training consistency
 - Better manager documentation
+- Better workflow diagnostics
 - Better decision support
 
 ## Tech Stack
@@ -78,13 +84,13 @@ The focus is practical execution:
 
 Planned improvements include:
 
-- Final screenshot refresh across all repositories
+- Build and deploy ClientOps Intake AI
+- Add ClientOps live demo and GitHub repository
 - Richer export formats
 - Optional PDF export capability
 - Optional OpenAI API integrations
 - Multi-record upload workflows
 - Team-level reporting
-- ClientOps Intake AI diagnostic app
 - Packaged small-business workflow toolkit
 
 ## Run Locally
