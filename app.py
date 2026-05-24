@@ -15,6 +15,8 @@ RECRUITPILOT_GITHUB = "https://github.com/bradleyhankins/recruitpilot-ai"
 LINKEDIN_URL = "https://www.linkedin.com/in/bradleyhankins"
 GITHUB_PROFILE = "https://github.com/bradleyhankins"
 
+SOPPILOT_LIVE = "https://soppilot-ai.streamlit.app/"
+SOPPILOT_GITHUB = "https://github.com/bradleyhankins/soppilot-ai"
 
 def safe_link_button(label, url):
     if url.startswith("http"):
@@ -50,7 +52,7 @@ The focus is not AI for novelty. The focus is AI for operational execution.
 """)
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Portfolio Projects", "3")
+col1.metric("Portfolio Projects", "4")
 col2.metric("Primary Stack", "Python + Streamlit")
 col3.metric("Focus Area", "AI Operations")
 
@@ -64,6 +66,7 @@ This toolkit was built around three practical business problems:
 1. **Managers need better visibility into performance.**
 2. **Sales teams need more consistent follow-up and CRM discipline.**
 3. **Small businesses need a more structured way to evaluate candidates.**
+4. **Teams need clearer process documentation, training, and quality standards.**            
 
 Together, these projects show how lightweight AI-assisted workflows can improve day-to-day operations across
 performance management, sales execution, and recruiting.
@@ -133,6 +136,29 @@ project_card(
     tech="Python, Streamlit, rules-based screening logic, Markdown report export",
     live_url=RECRUITPILOT_LIVE,
     github_url=RECRUITPILOT_GITHUB
+)
+
+st.divider()
+
+project_card(
+    title="SOPPilot AI",
+    subtitle="AI-assisted SOP, checklist, and training document generator",
+    problem="Small businesses often rely on tribal knowledge, verbal instructions, and inconsistent process documentation.",
+    features=[
+        "Process complexity score",
+        "Risk diagnosis",
+        "Missing-information check",
+        "Improvement recommendations",
+        "Standard Operating Procedure",
+        "Process checklist",
+        "Training plan",
+        "Quality control guide",
+        "Implementation plan",
+        "Downloadable SOP package"
+    ],
+    tech="Python, Streamlit, rules-based workflow logic, Markdown report export",
+    live_url=SOPPILOT_LIVE,
+    github_url=SOPPILOT_GITHUB
 )
 
 st.divider()
