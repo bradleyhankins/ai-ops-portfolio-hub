@@ -46,7 +46,7 @@ PROJECTS = {
 
 CSS = """
 <style>
-.block-container{max-width:1120px;padding-top:1.35rem;padding-bottom:3rem}
+.block-container{max-width:1180px;padding-top:1.35rem;padding-bottom:3rem}
 [data-testid="stSidebar"]{background:#111827}
 [data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3,[data-testid="stSidebar"] p,[data-testid="stSidebar"] li,[data-testid="stSidebar"] span,[data-testid="stSidebar"] label{color:#f9fafb!important}
 [data-testid="stSidebar"] li::marker{color:#93c5fd!important}
