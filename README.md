@@ -15,40 +15,73 @@ The portfolio demonstrates practical AI applications for:
 
 ## Live Demo
 
-[Launch Practical AI Ops Toolkit](https://ai-ops-portfolio-app.streamlit.app/)
+[Launch Practical AI Ops Toolkit](https://ai-ops-portfolio-hub.streamlit.app/)
 
 ## Current Version
 
-The toolkit now uses an embedded AI pattern across the portfolio.
+The toolkit uses an embedded AI pattern across the portfolio.
 
 Each output-heavy app works in two layers:
 
 1. **Rules-based workflow core:** provides reliable scoring, routing, diagnostics, structure, calculations, and fallback output.
-2. **Embedded AI enhancement layer:** when an OpenAI token is available, the app quietly improves summaries, recommendations, reports, and communication outputs.
+2. **Embedded AI enhancement layer:** when an OpenAI token is available, the app improves summaries, recommendations, reports, and communication outputs.
 
-If the AI call fails or an API key is unavailable, the apps silently fall back to the rules-based outputs. The user experience stays the same.
+If the AI call fails or an API key is unavailable, the apps fall back to the rules-based outputs. The user experience stays the same.
+
+## Portfolio Architecture
+
+The portfolio now uses a consistent project pattern across the apps:
+
+```text
+app.py                 # Streamlit UI and orchestration
+ai_helpers.py          # AI guardrails, API access, fallback, cache keys
+pdf_helpers.py         # PDF export helpers where applicable
+core/                  # Business logic, diagnostics, prompts, report builders
+data/                  # Sample data, dropdown options, public demo notes
+.github/workflows/     # CI checks where enabled
+```
 
 ## Projects Included
 
 ### ClientOps Intake AI
 
-Client diagnostic intake assistant that identifies workflow bottlenecks, scores operational maturity, recommends automation opportunities, routes users to the right toolkit app, and generates a 30-day improvement roadmap. Includes an embedded AI-enhanced executive diagnostic summary with rules-based fallback.
+Client diagnostic intake assistant that identifies workflow bottlenecks, scores operational maturity, recommends automation opportunities, routes users to the right toolkit app, and generates a 30-day improvement roadmap.
+
+- Live app: https://clientops-intake-ai.streamlit.app/
+- Repository: https://github.com/bradleyhankins/clientops-intake-ai
+- Output: PDF diagnostic report
 
 ### OpsPilot AI
 
-Operations intelligence dashboard that converts field-sales activity into KPI visibility, rep performance insights, lead source analysis, operations diagnosis, manager briefs, weekly sales meeting agendas, and downloadable manager reports. Includes an embedded AI-enhanced manager brief with rules-based fallback.
+Operations intelligence dashboard that converts field-sales activity into KPI visibility, rep performance insights, lead source analysis, operations diagnosis, manager briefs, weekly sales meeting agendas, and downloadable manager reports.
+
+- Live app: https://opspilot-ai.streamlit.app/
+- Repository: https://github.com/bradleyhankins/opspilot-ai
+- Output: PDF manager report and filtered CSV export
 
 ### FollowUpPilot AI
 
-Sales follow-up workflow assistant that turns customer context into next-best actions, lead temperature, deal risk scoring, customer text messages, emails, voicemail scripts, CRM notes, call scripts, objection guidance, manager coaching notes, follow-up sequences, and downloadable follow-up plans. Includes embedded AI-enhanced Copy Center outputs with rules-based fallback.
+Sales follow-up workflow assistant that turns customer context into next-best actions, lead temperature, deal risk scoring, customer text messages, emails, voicemail scripts, CRM notes, call scripts, objection guidance, manager coaching notes, follow-up sequences, and downloadable follow-up plans.
+
+- Live app: https://followuppilot-ai.streamlit.app/
+- Repository: https://github.com/bradleyhankins/followuppilot-ai
+- Output: PDF follow-up plan
 
 ### RecruitPilot AI
 
-Responsible ATS Lite resume review assistant that organizes job descriptions and resume text into review priorities, resume match signals, missing or unclear information, follow-up interview questions, manager summaries, candidate emails, and downloadable review packets for human review. Includes embedded AI-enhanced interview prep and manager summaries with rules-based fallback.
+Responsible ATS Lite resume review assistant that organizes job descriptions and PDF/DOCX resume uploads into review priorities, resume match signals, missing or unclear information, follow-up interview questions, manager summaries, candidate emails, PDF review packets, and candidate tracker CSV rows for human review.
+
+- Live app: https://recruitpilot-ai.streamlit.app/
+- Repository: https://github.com/bradleyhankins/recruitpilot-ai
+- Output: PDF review packet and CSV tracker row
 
 ### SOPPilot AI
 
-Process documentation workflow assistant that turns rough process notes into SOPs, process checklists, missing-information checks, risk diagnoses, rollout readiness guidance, manager summaries, training plans, quality control guides, implementation plans, and downloadable SOP packages. Includes an embedded AI-enhanced complete SOP package with rules-based fallback.
+Process documentation workflow assistant that turns rough process notes into SOPs, process checklists, missing-information checks, risk diagnoses, rollout readiness guidance, manager summaries, training plans, quality control guides, implementation plans, and downloadable SOP packages.
+
+- Live app: https://soppilot-ai.streamlit.app/
+- Repository: https://github.com/bradleyhankins/soppilot-ai
+- Output: PDF SOP package
 
 ## Suggested Test Flow
 
@@ -57,26 +90,18 @@ Process documentation workflow assistant that turns rough process notes into SOP
 3. Use the “Which tool should I use?” section to choose a workflow.
 4. Review the embedded AI-enhanced recommendation language.
 5. Open each live app and generate a sample output.
-6. Download a report/package from each output-heavy app.
+6. Download a PDF report/package from each output-heavy app.
 
 ## Screenshots
 
-### Tool Selector and Portfolio Overview
-
-![Practical AI Ops Toolkit Tool Selector](screenshots/portfolio-tool-selector.svg)
+Screenshots will be refreshed after the final UI pass across the portfolio.
 
 ## Export Strategy
 
 Current exports across the output-heavy apps:
 
-- Markdown reports/packages (`.md`) for GitHub-friendly and developer-friendly documentation
+- PDF reports/packages for manager-ready deliverables
 - CSV exports where structured data is useful
-
-Planned next upgrade:
-
-- PDF exports for manager-ready, non-technical deliverables
-
-Markdown is useful for transparency, source control, and portfolio review. PDF will be better for end users who expect polished, shareable business documents.
 
 ## Portfolio Purpose
 
@@ -100,11 +125,14 @@ The focus is practical execution:
 - OpenAI API integration
 - Rules-based workflow logic
 - Silent AI fallback pattern
+- Modular app architecture
+- Deterministic AI cache keys
 - Pandas
-- GitHub
-- Streamlit Community Cloud
-- Markdown report exports
+- PDF report exports
 - CSV-based workflows
+- GitHub
+- GitHub Actions checks
+- Streamlit Community Cloud
 
 ## Run Locally
 
@@ -128,6 +156,8 @@ The apps still work without this token by using rules-based fallback outputs.
 All sample data, names, companies, and scenarios used in these projects are fictional and created for public portfolio demonstration purposes.
 
 ## Responsible AI Note
+
+These tools use deterministic rules as the source of truth. AI is used to polish, summarize, or organize outputs without replacing human review or business judgment.
 
 RecruitPilot AI is designed to organize applicant information for human review. It should not be used as the sole basis for selection, rejection, compensation, or employment decisions.
 
