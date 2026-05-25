@@ -1,6 +1,6 @@
 import streamlit as st
 
-from ai_helpers import enhance_text
+from ai_helpers import enhance_text, stable_cache_key
 
 st.set_page_config(page_title="Practical AI Ops Toolkit", page_icon="🧠", layout="wide")
 
@@ -8,12 +8,22 @@ LINKEDIN_URL = "https://www.linkedin.com/in/bradleyhankins/"
 GITHUB_PROFILE = "https://github.com/bradleyhankins"
 
 PROJECTS = {
+    "ClientOps Intake AI": {
+        "status": "Live",
+        "category": "Client Diagnostic Intake",
+        "summary": "Business workflow diagnosis, maturity scoring, automation opportunities, app recommendations, and 30-day improvement roadmaps.",
+        "features": ["Pain-Point Intake", "Maturity Score", "Tool Match", "Roadmap", "PDF Report"],
+        "tech": "Python • Streamlit • Modular architecture • PDF export",
+        "live": "https://clientops-intake-ai.streamlit.app/",
+        "github": "https://github.com/bradleyhankins/clientops-intake-ai",
+        "best_for": "AI consulting intake, workflow diagnostics, small-business operating system reviews",
+    },
     "OpsPilot AI": {
         "status": "Live",
         "category": "Operations Intelligence",
-        "summary": "KPI visibility, rep insights, lead source analysis, manager briefs, meeting agendas, and downloadable reports.",
-        "features": ["KPI Dashboard", "Rep Analysis", "Lead Sources", "Manager Brief", "Reports"],
-        "tech": "Python • Streamlit • Pandas • CSV workflow",
+        "summary": "KPI visibility, rep insights, lead source analysis, manager briefs, meeting agendas, CSV validation, and downloadable reports.",
+        "features": ["KPI Dashboard", "Rep Analysis", "Lead Sources", "Manager Brief", "PDF + CSV"],
+        "tech": "Python • Streamlit • Pandas • Modular CSV workflow",
         "live": "https://opspilot-ai.streamlit.app/",
         "github": "https://github.com/bradleyhankins/opspilot-ai",
         "best_for": "Operations, RevOps, performance visibility, manager reporting",
@@ -21,9 +31,9 @@ PROJECTS = {
     "FollowUpPilot AI": {
         "status": "Live",
         "category": "Sales Follow-Up Workflow",
-        "summary": "Next-best actions, lead temperature, deal risk, text/email/voicemail scripts, CRM notes, and follow-up plans.",
-        "features": ["Next Best Action", "Lead Temperature", "Deal Risk", "Voicemail", "Follow-Up Plan"],
-        "tech": "Python • Streamlit • Workflow logic • Markdown export",
+        "summary": "Next-best actions, lead temperature, deal risk, text/email/voicemail scripts, CRM notes, and PDF follow-up plans.",
+        "features": ["Next Best Action", "Lead Temperature", "Deal Risk", "CRM Note", "PDF Plan"],
+        "tech": "Python • Streamlit • Modular workflow logic • PDF export",
         "live": "https://followuppilot-ai.streamlit.app/",
         "github": "https://github.com/bradleyhankins/followuppilot-ai",
         "best_for": "Sales execution, CRM discipline, follow-up workflows",
@@ -31,9 +41,9 @@ PROJECTS = {
     "RecruitPilot AI": {
         "status": "Live",
         "category": "ATS Lite Resume Review",
-        "summary": "Human-review resume organization with review priorities, match signals, missing information, questions, and packets.",
-        "features": ["Resume Input", "Review Priority", "Match Signals", "Questions", "Review Packet"],
-        "tech": "Python • Streamlit • Keyword logic • Markdown export",
+        "summary": "Human-review resume organization with PDF/DOCX parsing, review priorities, match signals, questions, packets, and CSV tracking.",
+        "features": ["PDF/DOCX Upload", "Review Priority", "Match Signals", "Questions", "PDF + CSV"],
+        "tech": "Python • Streamlit • Resume parsing • Responsible AI pattern",
         "live": "https://recruitpilot-ai.streamlit.app/",
         "github": "https://github.com/bradleyhankins/recruitpilot-ai",
         "best_for": "ATS Lite workflows, resume review organization, interview preparation",
@@ -41,22 +51,12 @@ PROJECTS = {
     "SOPPilot AI": {
         "status": "Live",
         "category": "Process Documentation",
-        "summary": "SOPs, checklists, training plans, risk checks, quality controls, rollout guidance, and documentation packages.",
-        "features": ["SOP Builder", "Checklists", "Training", "Risk Checks", "SOP Package"],
-        "tech": "Python • Streamlit • Process logic • Markdown export",
+        "summary": "SOPs, checklists, training plans, risk checks, quality controls, rollout guidance, and downloadable PDF documentation packages.",
+        "features": ["SOP Builder", "Checklists", "Training", "Risk Checks", "PDF Package"],
+        "tech": "Python • Streamlit • Modular process logic • PDF export",
         "live": "https://soppilot-ai.streamlit.app/",
         "github": "https://github.com/bradleyhankins/soppilot-ai",
         "best_for": "Process documentation, training consistency, quality control",
-    },
-    "ClientOps Intake AI": {
-        "status": "Live",
-        "category": "Client Diagnostic Intake",
-        "summary": "Business workflow diagnosis, maturity scoring, automation opportunities, app recommendations, and 30-day improvement roadmaps.",
-        "features": ["Pain-Point Intake", "Maturity Score", "Tool Match", "Roadmap", "Diagnostic Report"],
-        "tech": "Python • Streamlit • Diagnostic logic • Markdown export",
-        "live": "https://clientops-intake-ai.streamlit.app/",
-        "github": "https://github.com/bradleyhankins/clientops-intake-ai",
-        "best_for": "AI consulting intake, workflow diagnostics, small-business operating system reviews",
     },
 }
 
@@ -83,16 +83,11 @@ CSS = """
 .sidebar-link{display:block;width:100%;margin:.25rem 0;padding:.62rem .85rem;border-radius:12px;background:#f9fafb;color:#111827!important;border:1px solid #e5e7eb;font-weight:850;text-align:center;text-decoration:none!important;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:all .15s ease-in-out}
 .sidebar-link:hover{background:#dbeafe;border-color:#93c5fd;color:#0f172a!important;transform:translateY(-1px)}
 .hero{padding:2rem 2rem 1.8rem;border-radius:20px;background:linear-gradient(135deg,#111827 0%,#1f2937 52%,#334155 100%);color:#fff;box-shadow:0 18px 36px rgba(17,24,39,.20);margin-bottom:1rem;border:1px solid rgba(255,255,255,.08)}
-.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.75rem;font-weight:800;color:#93c5fd;margin-bottom:.65rem}
-.hero-title{font-size:2.35rem;line-height:1.08;font-weight:850;margin-bottom:.75rem;max-width:850px}
-.hero-subtitle{font-size:1.02rem;line-height:1.62;color:#e5e7eb;max-width:900px;margin-bottom:1rem}
-.hero-pills span{display:inline-block;padding:.35rem .65rem;margin:.18rem .28rem .18rem 0;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);font-weight:700;font-size:.78rem;color:#f8fafc}
-.stat-card,.info-card,.roadmap-card,.spotlight-card,.link-card,.usecase-card,.available-card,.project-card{background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 20px rgba(15,23,42,.055)}
-.stat-card{height:142px;padding:1rem;border-radius:16px;margin-bottom:.75rem}.stat-label{color:#6b7280;font-size:.82rem;font-weight:750;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem}.stat-value{color:#111827;font-size:1.48rem;line-height:1.18;font-weight:850;overflow-wrap:break-word}
+.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.75rem;font-weight:800;color:#93c5fd;margin-bottom:.65rem}.hero-title{font-size:2.35rem;line-height:1.08;font-weight:850;margin-bottom:.75rem;max-width:850px}.hero-subtitle{font-size:1.02rem;line-height:1.62;color:#e5e7eb;max-width:900px;margin-bottom:1rem}.hero-pills span{display:inline-block;padding:.35rem .65rem;margin:.18rem .28rem .18rem 0;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);font-weight:700;font-size:.78rem;color:#f8fafc}
+.stat-card,.info-card,.roadmap-card,.spotlight-card,.link-card,.usecase-card,.available-card,.project-card{background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 20px rgba(15,23,42,.055)}.stat-card{height:142px;padding:1rem;border-radius:16px;margin-bottom:.75rem}.stat-label{color:#6b7280;font-size:.82rem;font-weight:750;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem}.stat-value{color:#111827;font-size:1.48rem;line-height:1.18;font-weight:850;overflow-wrap:break-word}
 .section-title{margin-top:1.3rem;margin-bottom:.55rem;font-size:1.45rem;font-weight:850;color:#111827}.section-lede{color:#4b5563;font-size:.98rem;line-height:1.62;margin-bottom:1rem;max-width:950px}
-.info-card,.roadmap-card,.spotlight-card,.link-card,.usecase-card,.available-card{padding:1.2rem;border-radius:18px}.info-card{min-height:215px}.roadmap-card{min-height:235px}.spotlight-card{margin-bottom:.75rem;border-left:5px solid #1d4ed8}.link-card{min-height:180px;border-top:4px solid #111827}.usecase-card{min-height:150px;border-left:4px solid #1d4ed8;margin-bottom:.75rem}.available-card{border-top:4px solid #111827}
-.info-card h3,.roadmap-card h3,.spotlight-card h3,.link-card h3,.usecase-card h3,.available-card h3{font-size:1.05rem;font-weight:850;color:#111827;margin-bottom:.5rem}.info-card li,.roadmap-card li,.spotlight-card li,.available-card li{color:#4b5563;line-height:1.48;font-size:.92rem;margin-bottom:.18rem}.link-card p,.spotlight-card p,.usecase-card p{color:#4b5563;line-height:1.55;font-size:.93rem}.usecase-card strong{color:#111827}
-.project-card{height:315px;margin-bottom:.65rem;padding:1.2rem;border-radius:20px;box-shadow:0 10px 26px rgba(15,23,42,.07);display:flex;flex-direction:column}.project-topline{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:.35rem}.project-title{font-size:1.34rem;font-weight:900;color:#111827;margin:0}.project-category{font-size:.82rem;color:#1d4ed8;font-weight:850;margin-bottom:.8rem}.status-pill{padding:.22rem .55rem;border-radius:999px;font-size:.72rem;font-weight:850;white-space:nowrap}.status-live{color:#065f46;background:#d1fae5;border:1px solid #a7f3d0}.card-copy{color:#374151;line-height:1.48;font-size:.94rem;margin-bottom:.75rem}.feature-wrap{margin-top:.1rem}.feature-chip{display:inline-block;padding:.28rem .52rem;margin:.16rem .16rem .16rem 0;border-radius:999px;background:#f1f5f9;color:#1f2937;border:1px solid #e2e8f0;font-size:.74rem;font-weight:750}.tech-line{margin-top:auto;padding:.62rem .72rem;border-radius:12px;background:#f3f4f6;color:#1f2937;font-size:.82rem;font-weight:760}.note-box{padding:.9rem 1rem;border-radius:14px;background:#f8fafc;color:#334155;border:1px solid #e2e8f0;font-weight:650;margin:.95rem 0;font-size:.92rem}.final-cta{padding:1.4rem;border-radius:20px;background:#111827;color:white;margin-top:1.25rem;text-align:center}.final-cta h2{color:white;margin-bottom:.3rem;font-size:1.35rem}.final-cta p{color:#d1d5db;margin-bottom:0}
+.info-card,.roadmap-card,.spotlight-card,.link-card,.usecase-card,.available-card{padding:1.2rem;border-radius:18px}.info-card{min-height:215px}.roadmap-card{min-height:220px}.spotlight-card{margin-bottom:.75rem;border-left:5px solid #1d4ed8}.link-card{min-height:180px;border-top:4px solid #111827}.usecase-card{min-height:150px;border-left:4px solid #1d4ed8;margin-bottom:.75rem}.available-card{border-top:4px solid #111827}.info-card h3,.roadmap-card h3,.spotlight-card h3,.link-card h3,.usecase-card h3,.available-card h3{font-size:1.05rem;font-weight:850;color:#111827;margin-bottom:.5rem}.info-card li,.roadmap-card li,.spotlight-card li,.available-card li{color:#4b5563;line-height:1.48;font-size:.92rem;margin-bottom:.18rem}.link-card p,.spotlight-card p,.usecase-card p{color:#4b5563;line-height:1.55;font-size:.93rem}.usecase-card strong{color:#111827}
+.project-card{height:320px;margin-bottom:.65rem;padding:1.2rem;border-radius:20px;box-shadow:0 10px 26px rgba(15,23,42,.07);display:flex;flex-direction:column}.project-topline{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;margin-bottom:.35rem}.project-title{font-size:1.34rem;font-weight:900;color:#111827;margin:0}.project-category{font-size:.82rem;color:#1d4ed8;font-weight:850;margin-bottom:.8rem}.status-pill{padding:.22rem .55rem;border-radius:999px;font-size:.72rem;font-weight:850;white-space:nowrap}.status-live{color:#065f46;background:#d1fae5;border:1px solid #a7f3d0}.card-copy{color:#374151;line-height:1.48;font-size:.94rem;margin-bottom:.75rem}.feature-wrap{margin-top:.1rem}.feature-chip{display:inline-block;padding:.28rem .52rem;margin:.16rem .16rem .16rem 0;border-radius:999px;background:#f1f5f9;color:#1f2937;border:1px solid #e2e8f0;font-size:.74rem;font-weight:750}.tech-line{margin-top:auto;padding:.62rem .72rem;border-radius:12px;background:#f3f4f6;color:#1f2937;font-size:.82rem;font-weight:760}.note-box{padding:.9rem 1rem;border-radius:14px;background:#f8fafc;color:#334155;border:1px solid #e2e8f0;font-weight:650;margin:.95rem 0;font-size:.92rem}.final-cta{padding:1.4rem;border-radius:20px;background:#111827;color:white;margin-top:1.25rem;text-align:center}.final-cta h2{color:white;margin-bottom:.3rem;font-size:1.35rem}.final-cta p{color:#d1d5db;margin-bottom:0}
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
@@ -149,7 +144,7 @@ Why it fits: {project['summary']}
 
 Best for: {project['best_for']}
 
-Suggested first action: launch the app, load the sample workflow, review the output, and download the report or package that best matches the problem.
+Suggested first action: launch the app, load the sample workflow, review the output, and download the PDF/report/package that best matches the problem.
 """
 
 
@@ -217,7 +212,7 @@ fallback_recommendation = rules_recommendation_text(need, recommended_name, reco
 enhanced_recommendation = enhance_text(
     recommendation_prompt(need, recommended_name, recommended, fallback_recommendation),
     fallback_recommendation,
-    f"portfolio_recommendation_{hash(need + recommended_name)}",
+    stable_cache_key("portfolio_recommendation", {"need": need, "project": recommended_name}),
 )
 st.markdown(f"""
 <div class="spotlight-card">
@@ -234,10 +229,10 @@ st.markdown('<div class="section-title">Start here</div>', unsafe_allow_html=Tru
 st.markdown('<div class="section-lede">For hiring managers, recruiters, or consulting prospects, these are the fastest ways to evaluate the work.</div>', unsafe_allow_html=True)
 s1, s2, s3 = st.columns(3)
 with s1:
-    card("Review the full code portfolio", "See the repositories, README files, case studies, and project structure behind each deployed app.")
+    card("Review the full code portfolio", "See the repositories, README files, case studies, modular project structure, and deployed app links behind each tool.")
     link_button("Open GitHub Profile", GITHUB_PROFILE)
 with s2:
-    card("Connect professionally", "View background, current positioning, and reach out regarding operations, AI workflow, or RevOps opportunities.")
+    card("Connect professionally", "View background, positioning, and contact context for operations, AI workflow, RevOps, or process improvement opportunities.")
     link_button("Open LinkedIn Profile", LINKEDIN_URL)
 with s3:
     card("Use the diagnostic intake", "Start with ClientOps Intake AI to identify workflow bottlenecks and choose the right app.")
@@ -248,8 +243,8 @@ st.markdown('<div class="section-lede">Each tool solves a different operating pr
 u1, u2 = st.columns(2)
 with u1:
     usecase_card("Need a business diagnostic?", "ClientOps Intake AI", "Diagnose workflow bottlenecks, maturity level, and the best automation opportunity.")
-    usecase_card("Need performance visibility?", "OpsPilot AI", "Review KPIs, rep performance, lead source quality, and manager action items.")
-    usecase_card("Need applicant review organization?", "RecruitPilot AI", "Organize job descriptions and resume text into review priorities, match signals, and follow-up questions for human review.")
+    usecase_card("Need performance visibility?", "OpsPilot AI", "Review KPIs, rep performance, lead source quality, manager action items, and downloadable reporting.")
+    usecase_card("Need applicant review organization?", "RecruitPilot AI", "Upload PDF/DOCX resumes and organize job descriptions into review packets for human review.")
 with u2:
     usecase_card("Need stronger follow-up?", "FollowUpPilot AI", "Generate next-best actions, customer communication, CRM notes, deal-risk context, and multi-touch follow-up plans.")
     usecase_card("Need process documentation?", "SOPPilot AI", "Convert rough process notes into SOPs, checklists, training plans, quality controls, and rollout guidance.")
@@ -257,8 +252,8 @@ with u2:
 st.markdown('<div class="section-title">How this portfolio was built</div>', unsafe_allow_html=True)
 b1, b2, b3 = st.columns(3)
 with b1: card("1. Find repeatable pain", "Each app starts with a recurring business workflow problem: reporting, follow-up, applicant review, documentation, or client diagnostics.")
-with b2: card("2. Map the workflow", "The process is converted into inputs, decision rules, outputs, and manager-ready documentation.")
-with b3: card("3. Ship a working tool", "Each project is deployed as a Streamlit app with sample data, GitHub documentation, and downloadable outputs.")
+with b2: card("2. Map the workflow", "The process is converted into inputs, decision rules, outputs, guardrails, and manager-ready documentation.")
+with b3: card("3. Ship a working tool", "Each project is deployed as a Streamlit app with sample data, GitHub documentation, and user-friendly downloadable outputs.")
 
 st.markdown('<div class="section-title">Executive summary</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">This toolkit connects business operations experience with hands-on AI workflow implementation. Each project starts with a repeated operational pain point, maps the workflow, and produces manager-ready outputs that can be used in the field.</div>', unsafe_allow_html=True)
@@ -266,14 +261,14 @@ x1, x2 = st.columns(2)
 with x1:
     st.markdown('<div class="info-card"><h3>Business Operations</h3><ul><li>KPI reporting and manager visibility</li><li>Sales follow-up and CRM discipline</li><li>ATS Lite applicant review organization</li><li>SOP, checklist, and training generation</li><li>Client workflow diagnostics</li></ul></div>', unsafe_allow_html=True)
 with x2:
-    st.markdown('<div class="info-card"><h3>AI Workflow Implementation</h3><ul><li>Python and Streamlit app development</li><li>Rules-based AI-style workflow logic</li><li>Data-driven decision support</li><li>Downloadable Markdown reporting</li><li>GitHub documentation and live deployments</li></ul></div>', unsafe_allow_html=True)
+    st.markdown('<div class="info-card"><h3>AI Workflow Implementation</h3><ul><li>Python and Streamlit app development</li><li>Rules-based workflow engines with AI enhancement</li><li>Modular code architecture</li><li>PDF and CSV reporting workflows</li><li>GitHub documentation and live deployments</li></ul></div>', unsafe_allow_html=True)
 
 st.markdown('<div class="note-box">Public demo note: all sample data, names, companies, and scenarios are fictional and created for portfolio demonstration.</div>', unsafe_allow_html=True)
-st.markdown('<div class="note-box">Responsible AI note: RecruitPilot AI is designed to organize applicant information for human review. It should not be used as the sole basis for selection, rejection, compensation, or employment decisions.</div>', unsafe_allow_html=True)
+st.markdown('<div class="note-box">Responsible AI note: these tools use deterministic rules as the source of truth. AI is used to polish, summarize, or organize outputs without replacing human review or business judgment.</div>', unsafe_allow_html=True)
 
 st.markdown('<div class="section-title">Project spotlight</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">This selector lets visitors quickly focus on the project most relevant to them.</div>', unsafe_allow_html=True)
-selected_project = st.selectbox("Choose a project to spotlight", list(PROJECTS.keys()), index=4)
+selected_project = st.selectbox("Choose a project to spotlight", list(PROJECTS.keys()), index=0)
 spotlight = PROJECTS[selected_project]
 spotlight_features = "".join(f"<li>{feature}</li>" for feature in spotlight["features"])
 st.markdown(f"""
@@ -306,9 +301,9 @@ with p5: project_card("SOPPilot AI", PROJECTS["SOPPilot AI"])
 st.markdown('<div class="section-title">Toolkit roadmap</div>', unsafe_allow_html=True)
 r1, r2 = st.columns(2)
 with r1:
-    st.markdown('<div class="roadmap-card"><h3>Near-Term Upgrades</h3><ul><li>Refresh ClientOps screenshots</li><li>Add richer export formats</li><li>Add stronger role-specific templates</li><li>Explore PDF export options</li><li>Improve app-to-app navigation</li></ul></div>', unsafe_allow_html=True)
+    st.markdown('<div class="roadmap-card"><h3>Near-Term Upgrades</h3><ul><li>Refresh screenshots across all apps</li><li>Add richer sample scenarios</li><li>Add stronger role-specific templates</li><li>Improve app-to-app navigation</li><li>Package a unified toolkit case study</li></ul></div>', unsafe_allow_html=True)
 with r2:
-    st.markdown('<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>Packaged small-business workflow toolkit</li><li>Consulting-style diagnostic workflow</li><li>Expanded embedded AI summaries</li></ul></div>', unsafe_allow_html=True)
+    st.markdown('<div class="roadmap-card"><h3>Future Direction</h3><ul><li>Multi-record upload workflows</li><li>Team-level reporting</li><li>Reusable shared component library</li><li>Consulting-style diagnostic workflow</li><li>Expanded embedded AI summaries</li></ul></div>', unsafe_allow_html=True)
 
 st.markdown('<div class="section-title">Career / consulting positioning</div>', unsafe_allow_html=True)
 st.markdown('<div class="section-lede">This portfolio supports a focused direction in <strong>AI Operations, Workflow Automation, RevOps, and Process Improvement</strong>. The projects show a repeatable approach: identify an operational pain point, map the workflow, build a working tool, generate manager-ready outputs, and document the work through live demos and GitHub case studies.</div>', unsafe_allow_html=True)
